@@ -202,6 +202,66 @@
             text-align: center;
             padding: 20px 0;
         }
+        
+        /* 响应式设计 - 手机设备 */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: row;
+                padding: 15px 10px;
+                flex-wrap: nowrap;
+            }
+            
+            .header-left, .header-right {
+                flex: 1;
+                display: flex;
+                justify-content: center;
+                gap: 5px;
+            }
+            
+            .header-center {
+                flex: 2;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            header h1 {
+                font-size: 18px;
+                margin: 0;
+                white-space: nowrap;
+                text-align: center;
+            }
+            
+            .svg-icon {
+                width: 60px;
+                height: 30px;
+            }
+            
+            nav ul {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            
+            nav li {
+                margin: 5px;
+            }
+        }
+        
+        /* 超小屏幕设备 */
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 16px;
+            }
+            
+            .svg-icon {
+                width: 50px;
+                height: 25px;
+            }
+            
+            .header-left, .header-right {
+                gap: 3px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -269,11 +329,7 @@
         
         
         <main>
-            <section class="hero">
-                <h2>探索无限可能</h2>
-                <p>这是一个简单而优雅的首页模板，为您的项目提供良好的起点。您可以自定义内容和样式，以满足您的特定需求。</p>
-                <a href="#" class="btn">了解更多</a>
-            </section>
+            
             
             <section class="directory">
                 <h2>文件目录</h2>
@@ -284,20 +340,7 @@
                 </ul>
             </section>
             
-            <section class="features">
-                <div class="feature">
-                    <h3>响应式设计</h3>
-                    <p>适应各种屏幕尺寸，在手机、平板和桌面设备上都能完美显示。</p>
-                </div>
-                <div class="feature">
-                    <h3>现代风格</h3>
-                    <p>采用简洁现代的设计风格，提供优秀的用户体验。</p>
-                </div>
-                <div class="feature">
-                    <h3>易于定制</h3>
-                    <p>清晰的代码结构，便于您根据需要进行修改和扩展。</p>
-                </div>
-            </section>
+            
         </main>
         
         <footer>
