@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页</title>
+    <style>
+        body {
+            font-family: "Microsoft YaHei", Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            min-height: 100vh;
+        }
+        header {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 50%, #1f618d 100%);
+            color: white;
+            padding: 25px 0;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: shimmer 3s infinite;
+        }
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        .header-left, .header-right {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .header-center {
+            flex: 2;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 36px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 2;
+        }
+        .svg-icon {
+            width: 120px;
+            height: 60px;
+            filter: drop-shadow(2px 2px 3px rgba(0,0,0,0.2));
+            transition: transform 0.3s ease;
+        }
+        .svg-icon:hover {
+            transform: scale(1.05);
+        }
+        .header-left .svg-icon:nth-child(1) {
+            animation: float 3s ease-in-out infinite;
+        }
+        .header-left .svg-icon:nth-child(2) {
+            animation: float 3s ease-in-out infinite 0.5s;
+        }
+        .header-right .svg-icon:nth-child(1) {
+            animation: float 3s ease-in-out infinite 1s;
+        }
+        .header-right .svg-icon:nth-child(2) {
+            animation: float 3s ease-in-out infinite 1.5s;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+        }
+        nav {
+            background-color: #2980b9;
+            padding: 10px 0;
+        }
+        nav ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            justify-content: center;
+        }
+        nav li {
+            margin: 0 20px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        nav a:hover {
+            background-color: #34495e;
+        }
+        main {
+            padding: 40px 20px;
+        }
+        .hero {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .hero h2 {
+            color: #2c3e50;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        .hero p {
+            color: #7f8c8d;
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #2980b9;
+        }
+        .features {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+        .feature {
+            flex-basis: 30%;
+            background-color: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .feature h3 {
+            color: #2c3e50;
+            margin-top: 0;
+        }
+        .feature p {
+            color: #7f8c8d;
+        }
+        .directory {
+            background-color: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        .directory h2 {
+            color: #2c3e50;
+            margin-top: 0;
+            text-align: center;
+        }
+        .directory ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .directory li {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: white;
+            border-radius: 4px;
+            border-left: 4px solid #3498db;
+        }
+        .directory a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .directory a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            background-color: #34495e;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-left">
+                <!-- 化学仪器图案1 -->
+                <svg class="svg-icon" viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="10" y="15" width="8" height="30" rx="4" fill="none" stroke="white" stroke-width="1.5"/>
+                    <rect x="10" y="35" width="8" height="10" fill="white" opacity="0.7"/>
+                    <path d="M30 15 L30 25 L25 40 L35 40 L30 25" fill="none" stroke="white" stroke-width="1.5"/>
+                    <rect x="26" y="35" width="8" height="5" fill="white" opacity="0.7"/>
+                    <circle cx="55" cy="35" r="8" fill="none" stroke="white" stroke-width="1.5"/>
+                    <rect x="52" y="15" width="6" height="12" fill="none" stroke="white" stroke-width="1.5"/>
+                    <path d="M50 35 Q55 40 60 35" fill="white" opacity="0.7"/>
+                </svg>
+                
+                <!-- 化学仪器图案2 - 变化1 -->
+                <svg class="svg-icon" viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="15" y="18" width="6" height="25" rx="3" fill="none" stroke="white" stroke-width="1.5"/>
+                    <rect x="15" y="33" width="6" height="10" fill="white" opacity="0.7"/>
+                    <path d="M35 18 L35 28 L30 43 L40 43 L35 28" fill="none" stroke="white" stroke-width="1.5"/>
+                    <rect x="31" y="38" width="8" height="5" fill="white" opacity="0.7"/>
+                    <circle cx="60" cy="38" r="7" fill="none" stroke="white" stroke-width="1.5"/>
+                    <rect x="57" y="18" width="6" height="12" fill="none" stroke="white" stroke-width="1.5"/>
+                    <path d="M55 38 Q60 43 65 38" fill="white" opacity="0.7"/>
+                </svg>
+            </div>
+            <div class="header-center">
+                <h1>欢迎来到科学课课件网站</h1>
+            </div>
+            <div class="header-right">
+                <!-- 物理图案1 -->
+                <svg class="svg-icon" viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10 40 L40 20 L40 40 Z" fill="none" stroke="white" stroke-width="1.5"/>
+                    <rect x="50" y="25" width="12" height="12" fill="none" stroke="white" stroke-width="1.5"/>
+                    <circle cx="75" cy="35" r="6" fill="none" stroke="white" stroke-width="1.5"/>
+                    <ellipse cx="100" cy="30" rx="15" ry="5" fill="none" stroke="white" stroke-width="1.5"/>
+                    <ellipse cx="100" cy="30" rx="5" ry="15" fill="none" stroke="white" stroke-width="1.5"/>
+                    <ellipse cx="100" cy="30" rx="10" ry="10" fill="none" stroke="white" stroke-width="1.5" transform="rotate(45 100 30)"/>
+                    <circle cx="100" cy="30" r="3" fill="white"/>
+                    <circle cx="85" cy="30" r="2" fill="white"/>
+                    <circle cx="115" cy="30" r="2" fill="white"/>
+                    <circle cx="100" cy="15" r="2" fill="white"/>
+                    <circle cx="100" cy="45" r="2" fill="white"/>
+                </svg>
+                
+                <!-- 物理图案2 - 变化1 -->
+                <svg class="svg-icon" viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 35 L45 15 L45 35 Z" fill="none" stroke="white" stroke-width="1.5"/>
+                    <rect x="55" y="20" width="12" height="12" fill="none" stroke="white" stroke-width="1.5"/>
+                    <circle cx="80" cy="30" r="6" fill="none" stroke="white" stroke-width="1.5"/>
+                    <ellipse cx="105" cy="25" rx="15" ry="5" fill="none" stroke="white" stroke-width="1.5"/>
+                    <ellipse cx="105" cy="25" rx="5" ry="15" fill="none" stroke="white" stroke-width="1.5"/>
+                    <ellipse cx="105" cy="25" rx="10" ry="10" fill="none" stroke="white" stroke-width="1.5" transform="rotate(45 105 25)"/>
+                    <circle cx="105" cy="25" r="3" fill="white"/>
+                    <circle cx="90" cy="25" r="2" fill="white"/>
+                    <circle cx="120" cy="25" r="2" fill="white"/>
+                    <circle cx="105" cy="10" r="2" fill="white"/>
+                    <circle cx="105" cy="40" r="2" fill="white"/>
+                </svg>
+            </div>
+        </header>
+        
+        
+        
+        <main>
+            <section class="hero">
+                <h2>探索无限可能</h2>
+                <p>这是一个简单而优雅的首页模板，为您的项目提供良好的起点。您可以自定义内容和样式，以满足您的特定需求。</p>
+                <a href="#" class="btn">了解更多</a>
+            </section>
+            
+            <section class="directory">
+                <h2>文件目录</h2>
+                <ul>
+                    <li><a href="G9物理上学期期末考试大纲20251219.html" target="_blank">G9物理上学期期末考试大纲20251219</a></li>
+                </ul>
+            </section>
+            
+            <section class="features">
+                <div class="feature">
+                    <h3>响应式设计</h3>
+                    <p>适应各种屏幕尺寸，在手机、平板和桌面设备上都能完美显示。</p>
+                </div>
+                <div class="feature">
+                    <h3>现代风格</h3>
+                    <p>采用简洁现代的设计风格，提供优秀的用户体验。</p>
+                </div>
+                <div class="feature">
+                    <h3>易于定制</h3>
+                    <p>清晰的代码结构，便于您根据需要进行修改和扩展。</p>
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <p>&copy; 2025 我的网站. 保留所有权利.</p>
+        </footer>
+    </div>
+</body>
+</html>

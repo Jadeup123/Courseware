@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>电流与串并联电路 - G11物理课件</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1.2em;
+        }
+        
+        nav {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        nav button:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        nav button.active {
+            background: #e74c3c;
+        }
+        
+        .content {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            display: none;
+        }
+        
+        .content.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        h2 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        h3 {
+            color: #34495e;
+            margin: 20px 0 10px 0;
+        }
+        
+        .formula {
+            background: #f8f9fa;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 15px 0;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1em;
+        }
+        
+        .highlight {
+            background: #fff3cd;
+            padding: 15px;
+            border-left: 4px solid #ffc107;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .exercise {
+            background: #e8f5e8;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            border-left: 4px solid #28a745;
+        }
+        
+        .exercise h4 {
+            color: #155724;
+            margin-bottom: 10px;
+        }
+        
+        .answer {
+            background: #f8f9fa;
+            padding: 15px;
+            margin-top: 10px;
+            border-radius: 5px;
+            display: none;
+        }
+        
+        .answer-btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        .answer-btn:hover {
+            background: #218838;
+        }
+        
+        .circuit-diagram {
+            text-align: center;
+            margin: 20px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        
+        .circuit-diagram svg {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .comparison-table th, .comparison-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .comparison-table th {
+            background: #3498db;
+            color: white;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background: #f2f2f2;
+        }
+        
+        .tip {
+            background: #d1ecf1;
+            border: 1px solid #bee5eb;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        
+        .tip::before {
+            content: "💡 ";
+            font-size: 1.2em;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            color: #7f8c8d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>⚡ 电流与串并联电路</h1>
+            <p class="subtitle">G11物理课件 - 电学基础</p>
+        </header>
+        
+        <nav>
+            <button onclick="showSection('current')" class="active">电流概念</button>
+            <button onclick="showSection('series')">串联电路</button>
+            <button onclick="showSection('parallel')">并联电路</button>
+            <button onclick="showSection('exercises')">练习题</button>
+        </nav>
+        
+        <main>
+            <!-- 电流概念部分 -->
+            <section id="current" class="content active">
+                <h2>🔌 电流的基本概念</h2>
+                
+                <h3>1. 电流的定义</h3>
+                <p>电流是指<strong>单位时间内通过导体横截面的电荷量</strong>，表示电荷定向移动的快慢程度。</p>
+                
+                <div class="formula">
+                    <strong>电流公式：</strong> I = Q/t
+                    <ul>
+                        <li>I：电流强度（单位：安培，A）</li>
+                        <li>Q：通过导体横截面的电荷量（单位：库仑，C）</li>
+                        <li>t：时间（单位：秒，s）</li>
+                    </ul>
+                </div>
+                
+                <h3>2. 电流的单位</h3>
+                <ul>
+                    <li><strong>国际单位：</strong>安培（A）</li>
+                    <li><strong>常用单位：</strong>毫安（mA）、微安（μA）</li>
+                    <li><strong>换算关系：</strong>1A = 1000mA = 1000000μA</li>
+                </ul>
+                
+                <div class="highlight">
+                    <strong>💡 记忆技巧：</strong>1A的电流意味着1秒内有1库仑的电荷通过导体横截面。1库仑相当于6.25×10¹⁸个电子所带的电量。
+                </div>
+                
+                <h3>3. 电流的方向</h3>
+                <ul>
+                    <li><strong>规定方向：</strong>正电荷定向移动的方向</li>
+                    <li><strong>金属导体中：</strong>自由电子定向移动方向与电流方向相反</li>
+                    <li><strong>电解液中：</strong>正负离子向相反方向移动形成电流</li>
+                </ul>
+                
+                <h3>4. 电流的形成条件</h3>
+                <ul>
+                    <li><strong>自由电荷：</strong>导体中必须有能够自由移动的电荷</li>
+                    <li><strong>电场：</strong>导体两端必须存在电势差（电压）</li>
+                    <li><strong>闭合回路：</strong>必须构成闭合电路才能持续形成电流</li>
+                </ul>
+                
+                <div class="tip">
+                    电流的微观表达式：I = neSv，其中n是自由电子数密度，e是电子电量，S是导体横截面积，v是电子定向移动速度。
+                </div>
+                
+                <h3>5. 电流的分类</h3>
+                <ul>
+                    <li><strong>直流电流（DC）：</strong>方向不随时间改变的电流</li>
+                    <li><strong>交流电流（AC）：</strong>大小和方向都随时间周期性变化的电流</li>
+                    <li><strong>恒定电流：</strong>大小和方向都不随时间改变的电流</li>
+                </ul>
+            </section>
+            
+            <!-- 串联电路部分 -->
+            <section id="series" class="content">
+                <h2>🔗 串联电路</h2>
+                
+                <h3>1. 串联电路的定义</h3>
+                <p>串联电路是指将各个用电器<strong>依次连接</strong>在同一条电路中的连接方式，电流只有一条通路。</p>
+                
+                <div class="circuit-diagram">
+                    <h4>串联电路示意图</h4>
+                    <svg width="400" height="200" viewBox="0 0 400 200">
+                        <!-- 电源 -->
+                        <line x1="50" y1="100" x2="100" y2="100" stroke="black" stroke-width="2"/>
+                        <text x="25" y="105" font-size="14">电源</text>
+                        
+                        <!-- 电阻R1 -->
+                        <rect x="100" y="85" width="40" height="30" fill="none" stroke="black" stroke-width="2"/>
+                        <text x="110" y="130" font-size="12">R₁</text>
+                        
+                        <!-- 连接线 -->
+                        <line x1="140" y1="100" x2="180" y2="100" stroke="black" stroke-width="2"/>
+                        
+                        <!-- 电阻R2 -->
+                        <rect x="180" y="85" width="40" height="30" fill="none" stroke="black" stroke-width="2"/>
+                        <text x="190" y="130" font-size="12">R₂</text>
+                        
+                        <!-- 连接线 -->
+                        <line x1="220" y1="100" x2="260" y2="100" stroke="black" stroke-width="2"/>
+                        
+                        <!-- 电阻R3 -->
+                        <rect x="260" y="85" width="40" height="30" fill="none" stroke="black" stroke-width="2"/>
+                        <text x="270" y="130" font-size="12">R₃</text>
+                        
+                        <!-- 回路 -->
+                        <line x1="300" y1="100" x2="350" y2="100" stroke="black" stroke-width="2"/>
+                        <line x1="350" y1="100" x2="350" y2="150" stroke="black" stroke-width="2"/>
+                        <line x1="350" y1="150" x2="50" y2="150" stroke="black" stroke-width="2"/>
+                        <line x1="50" y1="150" x2="50" y2="100" stroke="black" stroke-width="2"/>
+                        
+                        <!-- 电流方向箭头 -->
+                        <polygon points="80,95 90,100 80,105" fill="red"/>
+                        <text x="75" y="90" font-size="12" fill="red">I</text>
+                    </svg>
+                </div>
+                
+                <h3>2. 串联电路的特点</h3>
+                <div class="highlight">
+                    <strong>🌟 串联电路三大特点：</strong>
+                    <ul>
+                        <li><strong>电流处处相等：</strong>I = I₁ = I₂ = I₃ = ...</li>
+                        <li><strong>总电压等于各部分电压之和：</strong>U = U₁ + U₂ + U₃ + ...</li>
+                        <li><strong>总电阻等于各电阻之和：</strong>R = R₁ + R₂ + R₃ + ...</li>
+                    </ul>
+                </div>
+                
+                <h3>3. 电压分配规律</h3>
+                <div class="formula">
+                    <strong>电压分配公式：</strong>U₁/U₂ = R₁/R₂
+                    <p>各电阻两端的电压与其电阻值成正比，电阻越大，分配的电压越大。</p>
+                </div>
+                
+                <h3>4. 功率分配规律</h3>
+                <div class="formula">
+                    <strong>功率分配公式：</strong>P₁/P₂ = R₁/R₂
+                    <p>各电阻消耗的功率与其电阻值成正比。</p>
+                </div>
+                
+                <h3>5. 串联电路的应用</h3>
+                <ul>
+                    <li><strong>电压分配：</strong>利用串联电阻获得所需的较低电压</li>
+                    <li><strong>限流保护：</strong>在电路中串联限流电阻保护用电器</li>
+                    <li><strong>节日彩灯：</strong>多个小灯泡串联使用</li>
+                </ul>
+                
+                <div class="tip">
+                    串联电路中，一个用电器损坏会导致整个电路断路，所有用电器都停止工作。
+                </div>
+            </section>
+            
+            <!-- 并联电路部分 -->
+            <section id="parallel" class="content">
+                <h2>🔀 并联电路</h2>
+                
+                <h3>1. 并联电路的定义</h3>
+                <p>并联电路是指将各个用电器<strong>并列连接</strong>在电路中的连接方式，电流有多条通路。</p>
+                
+                <div class="circuit-diagram">
+                    <h4>并联电路示意图</h4>
+                    <svg width="400" height="250" viewBox="0 0 400 250">
+                        <!-- 电源 -->
+                        <line x1="50" y1="125" x2="100" y2="125" stroke="black" stroke-width="2"/>
+                        <text x="25" y="130" font-size="14">电源</text>
+                        
+                        <!-- 主干线 -->
+                        <line x1="100" y1="125" x2="150" y2="125" stroke="black" stroke-width="2"/>
+                        <line x1="150" y1="125" x2="150" y2="50" stroke="black" stroke-width="2"/>
+                        <line x1="150" y1="125" x2="150" y2="200" stroke="black" stroke-width="2"/>
+                        
+                        <!-- 分支1 - R1 -->
+                        <line x1="150" y1="50" x2="200" y2="50" stroke="black" stroke-width="2"/>
+                        <rect x="200" y="35" width="40" height="30" fill="none" stroke="black" stroke-width="2"/>
+                        <text x="210" y="80" font-size="12">R₁</text>
+                        <line x1="240" y1="50" x2="290" y2="50" stroke="black" stroke-width="2"/>
+                        
+                        <!-- 分支2 - R2 -->
+                        <line x1="150" y1="100" x2="200" y2="100" stroke="black" stroke-width="2"/>
+                        <rect x="200" y="85" width="40" height="30" fill="none" stroke="black" stroke-width="2"/>
+                        <text x="210" y="130" font-size="12">R₂</text>
+                        <line x1="240" y1="100" x2="290" y2="100" stroke="black" stroke-width="2"/>
+                        
+                        <!-- 分支3 - R3 -->
+                        <line x1="150" y1="200" x2="200" y2="200" stroke="black" stroke-width="2"/>
+                        <rect x="200" y="185" width="40" height="30" fill="none" stroke="black" stroke-width="2"/>
+                        <text x="210" y="230" font-size="12">R₃</text>
+                        <line x1="240" y1="200" x2="290" y2="200" stroke="black" stroke-width="2"/>
+                        
+                        <!-- 汇合点 -->
+                        <line x1="290" y1="50" x2="320" y2="50" stroke="black" stroke-width="2"/>
+                        <line x1="290" y1="100" x2="320" y2="100" stroke="black" stroke-width="2"/>
+                        <line x1="290" y1="200" x2="320" y2="200" stroke="black" stroke-width="2"/>
+                        <line x1="320" y1="50" x2="320" y2="200" stroke="black" stroke-width="2"/>
+                        <line x1="320" y1="125" x2="350" y2="125" stroke="black" stroke-width="2"/>
+                        
+                        <!-- 回路 -->
+                        <line x1="350" y1="125" x2="350" y2="175" stroke="black" stroke-width="2"/>
+                        <line x1="350" y1="175" x2="50" y2="175" stroke="black" stroke-width="2"/>
+                        <line x1="50" y1="175" x2="50" y2="125" stroke="black" stroke-width="2"/>
+                        
+                        <!-- 电流方向箭头 -->
+                        <polygon points="120,120 130,125 120,130" fill="red"/>
+                        <text x="115" y="115" font-size="12" fill="red">I</text>
+                        
+                        <polygon points="170,45 180,50 170,55" fill="blue"/>
+                        <text x="165" y="40" font-size="12" fill="blue">I₁</text>
+                    </svg>
+                </div>
+                
+                <h3>2. 并联电路的特点</h3>
+                <div class="highlight">
+                    <strong>🌟 并联电路三大特点：</strong>
+                    <ul>
+                        <li><strong>各支路电压相等：</strong>U = U₁ = U₂ = U₃ = ...</li>
+                        <li><strong>总电流等于各支路电流之和：</strong>I = I₁ + I₂ + I₃ + ...</li>
+                        <li><strong>总电阻的倒数等于各电阻倒数之和：</strong>1/R = 1/R₁ + 1/R₂ + 1/R₃ + ...</li>
+                    </ul>
+                </div>
+                
+                <h3>3. 电流分配规律</h3>
+                <div class="formula">
+                    <strong>电流分配公式：</strong>I₁/I₂ = R₂/R₁
+                    <p>各支路电流与电阻值成反比，电阻越大，通过的电流越小。</p>
+                </div>
+                
+                <h3>4. 功率分配规律</h3>
+                <div class="formula">
+                    <strong>功率分配公式：</strong>P₁/P₂ = R₂/R₁
+                    <p>各电阻消耗的功率与其电阻值成反比。</p>
+                </div>
+                
+                <h3>5. 并联电路的应用</h3>
+                <ul>
+                    <li><strong>家用电路：</strong>各种电器并联使用，互不影响</li>
+                    <li><strong>分流电路：</strong>利用并联电阻分流保护电流表</li>
+                    <li><strong>备用电路：</strong>重要设备并联备用电路提高可靠性</li>
+                </ul>
+                
+                <div class="tip">
+                    并联电路中，一个支路损坏不影响其他支路的正常工作，这是家用电器采用并联连接的重要原因。
+                </div>
+                
+                <h3>6. 串并联电路对比</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>特性</th>
+                            <th>串联电路</th>
+                            <th>并联电路</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>电流</td>
+                            <td>处处相等</td>
+                            <td>总电流等于各支路电流之和</td>
+                        </tr>
+                        <tr>
+                            <td>电压</td>
+                            <td>总电压等于各部分电压之和</td>
+                            <td>各支路电压相等</td>
+                        </tr>
+                        <tr>
+                            <td>电阻</td>
+                            <td>总电阻等于各电阻之和</td>
+                            <td>总电阻倒数等于各电阻倒数之和</td>
+                        </tr>
+                        <tr>
+                            <td>功率分配</td>
+                            <td>与电阻成正比</td>
+                            <td>与电阻成反比</td>
+                        </tr>
+                        <tr>
+                            <td>故障影响</td>
+                            <td>一个损坏全部停止工作</td>
+                            <td>互不影响</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            
+            <!-- 练习题部分 -->
+            <section id="exercises" class="content">
+                <h2>📝 练习题</h2>
+                
+                <div class="exercise">
+                    <h4>基础题 1：电流计算</h4>
+                    <p>某导体在10秒内通过横截面的电荷量为30库仑，求通过该导体的电流强度。</p>
+                    <button class="answer-btn" onclick="toggleAnswer('answer1')">显示答案</button>
+                    <div id="answer1" class="answer">
+                        <p><strong>解：</strong></p>
+                        <p>根据电流公式 I = Q/t</p>
+                        <p>I = 30C ÷ 10s = 3A</p>
+                        <p><strong>答：</strong>通过该导体的电流强度为3安培。</p>
+                    </div>
+                </div>
+                
+                <div class="exercise">
+                    <h4>基础题 2：串联电路</h4>
+                    <p>三个电阻R₁=2Ω，R₂=3Ω，R₃=5Ω串联连接，电源电压为10V，求：</p>
+                    <p>(1) 总电阻 (2) 电路中的电流 (3) 各电阻两端的电压</p>
+                    <button class="answer-btn" onclick="toggleAnswer('answer2')">显示答案</button>
+                    <div id="answer2" class="answer">
+                        <p><strong>解：</strong></p>
+                        <p>(1) 总电阻：R = R₁ + R₂ + R₃ = 2Ω + 3Ω + 5Ω = 10Ω</p>
+                        <p>(2) 电路电流：I = U/R = 10V ÷ 10Ω = 1A</p>
+                        <p>(3) 各电阻电压：</p>
+                        <p>U₁ = I × R₁ = 1A × 2Ω = 2V</p>
+                        <p>U₂ = I × R₂ = 1A × 3Ω = 3V</p>
+                        <p>U₃ = I × R₃ = 1A × 5Ω = 5V</p>
+                        <p><strong>验证：</strong>U₁ + U₂ + U₃ = 2V + 3V + 5V = 10V ✓</p>
+                    </div>
+                </div>
+                
+                <div class="exercise">
+                    <h4>基础题 3：并联电路</h4>
+                    <p>两个电阻R₁=6Ω，R₂=3Ω并联连接，电源电压为12V，求：</p>
+                    <p>(1) 总电阻 (2) 总电流 (3) 各支路电流</p>
+                    <button class="answer-btn" onclick="toggleAnswer('answer3')">显示答案</button>
+                    <div id="answer3" class="answer">
+                        <p><strong>解：</strong></p>
+                        <p>(1) 总电阻：1/R = 1/R₁ + 1/R₂ = 1/6 + 1/3 = 1/6 + 2/6 = 3/6 = 1/2</p>
+                        <p>所以 R = 2Ω</p>
+                        <p>(2) 总电流：I = U/R = 12V ÷ 2Ω = 6A</p>
+                        <p>(3) 各支路电流：</p>
+                        <p>I₁ = U/R₁ = 12V ÷ 6Ω = 2A</p>
+                        <p>I₂ = U/R₂ = 12V ÷ 3Ω = 4A</p>
+                        <p><strong>验证：</strong>I₁ + I₂ = 2A + 4A = 6A ✓</p>
+                    </div>
+                </div>
+                
+                
+                
+                <div class="exercise">
+                    <h4>提高题 1：实际应用</h4>
+                    <p>一个标有"6V 3W"的小灯泡，要把它接到12V的电源上正常工作，应该串联一个多大的电阻？这个电阻消耗的功率是多少？</p>
+                    <button class="answer-btn" onclick="toggleAnswer('answer4')">显示答案</button>
+                    <div id="answer4" class="answer">
+                        <p><strong>解：</strong></p>
+                        <p>小灯泡正常工作时的电流：</p>
+                        <p>I = P/U = 3W ÷ 6V = 0.5A</p>
+                        <p>小灯泡的电阻：</p>
+                        <p>R灯 = U/I = 6V ÷ 0.5A = 12Ω</p>
+                        <p>串联电阻需要分担的电压：</p>
+                        <p>UR = 12V - 6V = 6V</p>
+                        <p>串联电阻的阻值：</p>
+                        <p>R = UR/I = 6V ÷ 0.5A = 12Ω</p>
+                        <p>串联电阻消耗的功率：</p>
+                        <p>P = I² × R = 0.5² × 12 = 0.25 × 12 = 3W</p>
+                        <p><strong>答：</strong>应串联一个12Ω的电阻，这个电阻消耗的功率为3W。</p>
+                    </div>
+                </div>
+                
+                <div class="exercise">
+                    <h4>挑战题：电路设计</h4>
+                    <p>现有三个电阻：2Ω、3Ω、6Ω各一个，如何连接才能得到4Ω的等效电阻？请画出电路图并计算验证。</p>
+                    <button class="answer-btn" onclick="toggleAnswer('answer5')">显示答案</button>
+                    <div id="answer5" class="answer">
+                        <p><strong>解：</strong></p>
+                        <p>将3Ω和6Ω并联，再与2Ω串联：</p>
+                        <p>3Ω和6Ω并联的等效电阻：</p>
+                        <p>1/R并 = 1/3 + 1/6 = 2/6 + 1/6 = 3/6 = 1/2</p>
+                        <p>所以 R并 = 2Ω</p>
+                        <p>总电阻：R总 = 2Ω + 2Ω = 4Ω ✓</p>
+                        <p><strong>另一种方法：</strong>将2Ω和6Ω并联，再与3Ω串联：</p>
+                        <p>2Ω和6Ω并联：1/R并 = 1/2 + 1/6 = 3/6 + 1/6 = 4/6 = 2/3</p>
+                        <p>R并 = 1.5Ω</p>
+                        <p>R总 = 3Ω + 1.5Ω = 4.5Ω（不符合要求）</p>
+                        <p><strong>答：</strong>应将3Ω和6Ω并联，再与2Ω串联，可得到4Ω的等效电阻。</p>
+                    </div>
+                </div>
+                
+                <div class="tip">
+                    <strong>📚 学习建议：</strong>
+                    <ul>
+                        <li>掌握基本公式，理解物理意义</li>
+                        <li>多做练习题，提高解题能力</li>
+                        <li>注意单位换算和有效数字</li>
+                        <li>学会画电路图，标明已知量和未知量</li>
+                        <li>养成验证答案的习惯</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <p>© 2024 G11物理课件 - 电流与串并联电路</p>
+            <p>祝学习进步！🎯</p>
+        </footer>
+    </div>
+    
+    <script>
+        function showSection(sectionId) {
+            // 隐藏所有内容区域
+            const sections = document.querySelectorAll('.content');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // 显示选中的内容区域
+            document.getElementById(sectionId).classList.add('active');
+            
+            // 更新导航按钮状态
+            const buttons = document.querySelectorAll('nav button');
+            buttons.forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            // 设置当前按钮为活动状态
+            const activeButton = Array.from(buttons).find(button => 
+                button.getAttribute('onclick').includes(sectionId)
+            );
+            if (activeButton) {
+                activeButton.classList.add('active');
+            }
+        }
+        
+        function toggleAnswer(answerId) {
+            const answer = document.getElementById(answerId);
+            const button = answer.previousElementSibling;
+            
+            if (answer.style.display === 'block') {
+                answer.style.display = 'none';
+                button.textContent = '显示答案';
+            } else {
+                answer.style.display = 'block';
+                button.textContent = '隐藏答案';
+            }
+        }
+        
+        // 页面加载时的初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            // 默认显示第一个部分
+            showSection('current');
+        });
+    </script>
+</body>
+</html>
