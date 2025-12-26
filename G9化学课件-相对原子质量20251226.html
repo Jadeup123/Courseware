@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>G9化学课件 - 相对原子质量、相对分子质量、质量分数</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 15px;
+        }
+        h2 {
+            font-size: 1.8em;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: #2980b9;
+        }
+        h3 {
+            font-size: 1.4em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            color: #34495e;
+        }
+        .section {
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            border-left: 5px solid #3498db;
+        }
+        .formula {
+            background-color: #e8f4f8;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            margin: 15px 0;
+            text-align: center;
+            font-size: 1.2em;
+        }
+        .example {
+            background-color: #fff3cd;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #ffc107;
+            margin: 15px 0;
+        }
+        .exercise {
+            background-color: #d4edda;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #28a745;
+            margin: 15px 0;
+        }
+        .answer {
+            background-color: #f8d7da;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            display: none;
+        }
+        .show-answer {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 10px 0;
+        }
+        .show-answer:hover {
+            background-color: #0056b3;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .highlight {
+            background-color: #ffeb3b;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        .note {
+            background-color: #e7f3fe;
+            border-left: 6px solid #2196F3;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .navigation {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .nav-button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .nav-button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>G9化学课件</h1>
+        <h2>相对原子质量、相对分子质量、元素的质量分数</h2>
+        
+        <div class="navigation">
+            <button class="nav-button" onclick="scrollToSection('section1')">相对原子质量</button>
+            <button class="nav-button" onclick="scrollToSection('section2')">相对分子质量</button>
+            <button class="nav-button" onclick="scrollToSection('section3')">元素的质量分数</button>
+        </div>
+
+        <div id="section1" class="section">
+            <h2>一、相对原子质量</h2>
+            
+            <h3>1. 概念</h3>
+            <p>相对原子质量是以碳-12原子质量的1/12作为标准，其他原子的平均原子质量与它相比所得的比值。</p>
+            
+            <div class="formula">
+                相对原子质量 = 原子质量 / (碳-12原子质量 × 1/12)
+            </div>
+            
+            <h3>2. 特点</h3>
+            <ul>
+                <li>相对原子质量是一个<span class="highlight">比值</span>，没有单位</li>
+                <li>相对原子质量≈质子数 + 中子数</li>
+                <li>元素的相对原子质量可以在元素周期表中查到</li>
+            </ul>
+            
+            <h3>3. 常见元素的相对原子质量（前20位元素）</h3>
+            <table>
+                <tr>
+                    <th>原子序数</th>
+                    <th>元素</th>
+                    <th>符号</th>
+                    <th>相对原子质量</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>氢</td>
+                    <td>H</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>氦</td>
+                    <td>He</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>锂</td>
+                    <td>Li</td>
+                    <td>7</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>铍</td>
+                    <td>Be</td>
+                    <td>9</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>硼</td>
+                    <td>B</td>
+                    <td>11</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>碳</td>
+                    <td>C</td>
+                    <td>12</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>氮</td>
+                    <td>N</td>
+                    <td>14</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>氧</td>
+                    <td>O</td>
+                    <td>16</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>氟</td>
+                    <td>F</td>
+                    <td>19</td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>氖</td>
+                    <td>Ne</td>
+                    <td>20</td>
+                </tr>
+                <tr>
+                    <td>11</td>
+                    <td>钠</td>
+                    <td>Na</td>
+                    <td>23</td>
+                </tr>
+                <tr>
+                    <td>12</td>
+                    <td>镁</td>
+                    <td>Mg</td>
+                    <td>24</td>
+                </tr>
+                <tr>
+                    <td>13</td>
+                    <td>铝</td>
+                    <td>Al</td>
+                    <td>27</td>
+                </tr>
+                <tr>
+                    <td>14</td>
+                    <td>硅</td>
+                    <td>Si</td>
+                    <td>28</td>
+                </tr>
+                <tr>
+                    <td>15</td>
+                    <td>磷</td>
+                    <td>P</td>
+                    <td>31</td>
+                </tr>
+                <tr>
+                    <td>16</td>
+                    <td>硫</td>
+                    <td>S</td>
+                    <td>32</td>
+                </tr>
+                <tr>
+                    <td>17</td>
+                    <td>氯</td>
+                    <td>Cl</td>
+                    <td>35.5</td>
+                </tr>
+                <tr>
+                    <td>18</td>
+                    <td>氩</td>
+                    <td>Ar</td>
+                    <td>40</td>
+                </tr>
+                <tr>
+                    <td>19</td>
+                    <td>钾</td>
+                    <td>K</td>
+                    <td>39</td>
+                </tr>
+                <tr>
+                    <td>20</td>
+                    <td>钙</td>
+                    <td>Ca</td>
+                    <td>40</td>
+                </tr>
+            </table>
+            
+            <div class="example">
+                <h4>例题1：</h4>
+                <p>一个氧原子的质量是2.657×10⁻²⁶kg，一个碳-12原子的质量是1.993×10⁻²⁶kg，求氧的相对原子质量。</p>
+                <div class="formula">
+                    氧的相对原子质量 = 2.657×10⁻²⁶kg ÷ (1.993×10⁻²⁶kg × 1/12) ≈ 16
+                </div>
+            </div>
+        </div>
+
+        <div id="section2" class="section">
+            <h2>二、相对分子质量</h2>
+            
+            <h3>1. 概念</h3>
+            <p>相对分子质量是化学式中各原子的相对原子质量的总和。</p>
+            
+            <div class="formula">
+                相对分子质量 = 各原子的相对原子质量之和
+            </div>
+            
+            <h3>2. 计算方法</h3>
+            <ul>
+                <li>确定化学式中各元素的原子个数</li>
+                <li>查找各元素的相对原子质量</li>
+                <li>相对分子质量 = Σ(相对原子质量 × 原子个数)</li>
+            </ul>
+            
+            <div class="example">
+                <h4>例题2：</h4>
+                <p>计算H₂O（水）的相对分子质量。</p>
+                <div class="formula">
+                    水的相对分子质量 = 2×氢的相对原子质量 + 1×氧的相对原子质量 = 2×1 + 1×16 = 18
+                </div>
+            </div>
+            
+            <div class="example">
+                <h4>例题3：</h4>
+                <p>计算H₂SO₄（硫酸）的相对分子质量。</p>
+                <div class="formula">
+                    硫酸的相对分子质量 = 2×氢的相对原子质量 + 1×硫的相对原子质量 + 4×氧的相对原子质量 = 2×1 + 1×32 + 4×16 = 98
+                </div>
+            </div>
+            
+            <div class="example">
+                <h4>例题4：</h4>
+                <p>计算Ca(OH)₂（氢氧化钙）的相对分子质量。</p>
+                <div class="formula">
+                    氢氧化钙的相对分子质量 = 1×钙的相对原子质量 + 2×[氧的相对原子质量 + 氢的相对原子质量] = 1×40 + 2×(16 + 1) = 74
+                </div>
+            </div>
+            
+            <div class="note">
+                <strong>注意：</strong>化学式中括号外的数字表示括号内整个原子团的个数！
+            </div>
+        </div>
+
+        <div id="section3" class="section">
+            <h2>三、质量分数</h2>
+            
+            <h3>1. 概念</h3>
+            <p>元素的质量分数是指化合物中某元素的质量与化合物总质量的比值。</p>
+            
+            <div class="formula">
+                元素的质量分数 = (元素的质量 / 化合物的质量) × 100%
+            </div>
+            
+            <h3>2. 计算公式</h3>
+            <div class="formula">
+                元素的质量分数 = [相对原子质量 × 原子个数 / 相对分子质量] × 100%
+            </div>
+            
+            <h3>3. 计算步骤</h3>
+            <ol>
+                <li>计算化合物的相对分子质量</li>
+                <li>计算所求元素的总相对原子质量</li>
+                <li>代入公式计算元素的质量分数</li>
+            </ol>
+            
+            <div class="example">
+                <h4>例题5：</h4>
+                <p>计算H₂O中氢元素的质量分数。</p>
+                <div class="formula">
+                    水的相对分子质量 = 2×氢的相对原子质量 + 1×氧的相对原子质量 = 2×1 + 1×16 = 18<br>
+                    氢元素的质量分数 = [2×氢的相对原子质量 / 水的相对分子质量] × 100% = (2×1 / 18) × 100% = 11.1%
+                </div>
+            </div>
+            
+            <div class="example">
+                <h4>例题6：</h4>
+                <p>计算NH₄NO₃中氮元素的质量分数。</p>
+                <div class="formula">
+                    硝酸铵的相对分子质量 = 2×氮的相对原子质量 + 4×氢的相对原子质量 + 3×氧的相对原子质量 = 2×14 + 4×1 + 3×16 = 80<br>
+                    氮元素的质量分数 = [2×氮的相对原子质量 / 硝酸铵的相对分子质量] × 100% = (2×14 / 80) × 100% = 35%
+                </div>
+            </div>
+            
+            <div class="example">
+                <h4>例题7：</h4>
+                <p>计算CaCO₃中钙元素、碳元素、氧元素的质量分数。</p>
+                <div class="formula">
+                    碳酸钙的相对分子质量 = 钙的相对原子质量 + 碳的相对原子质量 + 3×氧的相对原子质量 = 40 + 12 + 3×16 = 100<br>
+                    钙元素的质量分数 = [钙的相对原子质量 / 碳酸钙的相对分子质量] × 100% = (40 / 100) × 100% = 40%<br>
+                    碳元素的质量分数 = [碳的相对原子质量 / 碳酸钙的相对分子质量] × 100% = (12 / 100) × 100% = 12%<br>
+                    氧元素的质量分数 = [3×氧的相对原子质量 / 碳酸钙的相对分子质量] × 100% = (3×16 / 100) × 100% = 48%
+                </div>
+            </div>
+            
+            <h3>4. 元素的质量分数的应用</h3>
+            <div class="example">
+                <h4>例题8：</h4>
+                <p>100kg NH₄NO₃中含氮元素多少千克？</p>
+                <div class="formula">
+                    氮元素的质量分数 = 35%<br>
+                    氮元素质量 = 100kg × 35% = 35kg
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>综合练习</h2>
+            
+            <div class="exercise">
+                <h4>练习1：</h4>
+                <p>计算C₂H₅OH（乙醇）的相对分子质量。</p>
+                <button class="show-answer" onclick="toggleAnswer('answer1')">显示答案</button>
+                <div id="answer1" class="answer">
+                    <div class="formula">
+                        乙醇的相对分子质量 = 2×碳的相对原子质量 + 6×氢的相对原子质量 + 1×氧的相对原子质量 = 2×12 + 6×1 + 1×16 = 46
+                    </div>
+                </div>
+            </div>
+            
+            <div class="exercise">
+                <h4>练习2：</h4>
+                <p>计算Fe₂O₃中铁元素的质量分数。</p>
+                <button class="show-answer" onclick="toggleAnswer('answer2')">显示答案</button>
+                <div id="answer2" class="answer">
+                    <div class="formula">
+                        氧化铁的相对分子质量 = 2×铁的相对原子质量 + 3×氧的相对原子质量 = 2×56 + 3×16 = 160<br>
+                        铁元素的质量分数 = [2×铁的相对原子质量 / 氧化铁的相对分子质量] × 100% = (2×56 / 160) × 100% = 70%
+                    </div>
+                </div>
+            </div>
+            
+            <div class="exercise">
+                <h4>练习3：</h4>
+                <p>50kg Ca(OH)₂中含钙元素多少千克？</p>
+                <button class="show-answer" onclick="toggleAnswer('answer3')">显示答案</button>
+                <div id="answer3" class="answer">
+                    <div class="formula">
+                        氢氧化钙的相对分子质量 = 钙的相对原子质量 + 2×[氧的相对原子质量 + 氢的相对原子质量] = 40 + 2×(16 + 1) = 74<br>
+                        钙元素的质量分数 = [钙的相对原子质量 / 氢氧化钙的相对分子质量] × 100% = (40 / 74) × 100% ≈ 54.1%<br>
+                        钙元素质量 = 50kg × 54.1% ≈ 27.05kg
+                    </div>
+                </div>
+            </div>
+            
+            <div class="exercise">
+                <h4>练习4：</h4>
+                <p>某尿素样品[CO(NH₂)₂]中氮元素的质量分数为45%，判断该样品是否为纯净物。</p>
+                <button class="show-answer" onclick="toggleAnswer('answer4')">显示答案</button>
+                <div id="answer4" class="answer">
+                    <div class="formula">
+                        尿素的相对分子质量 = 碳的相对原子质量 + 氧的相对原子质量 + 2×[氮的相对原子质量 + 2×氢的相对原子质量] = 12 + 16 + 2×(14 + 2×1) = 60<br>
+                        纯净物中氮元素的质量分数 = [2×氮的相对原子质量 / 尿素的相对分子质量] × 100% = (2×14 / 60) × 100% ≈ 46.7%<br>
+                        45% < 46.7%，所以该样品不是纯净物
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>G9课程小结</h2>
+            <ul>
+                <li><strong>相对原子质量</strong>：以碳-12为标准的比值，无单位</li>
+                <li><strong>相对分子质量</strong>：化学式中各原子相对原子质量之和</li>
+                <li><strong>元素的质量分数</strong>：元素质量占化合物总质量的百分比</li>
+                <li>计算时要特别注意化学式中各元素的原子个数</li>
+                <li>括号外的数字表示括号内整个原子团的个数</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        function toggleAnswer(answerId) {
+            const answer = document.getElementById(answerId);
+            if (answer.style.display === 'none' || answer.style.display === '') {
+                answer.style.display = 'block';
+            } else {
+                answer.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

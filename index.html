@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>首页</title>
+    <title>蓝色诺瓦科学课练习资料</title>
     <style>
         body {
             font-family: "Microsoft YaHei", Arial, sans-serif;
@@ -23,9 +23,6 @@
             color: white;
             padding: 25px 0;
             text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             position: relative;
             overflow: hidden;
@@ -44,48 +41,12 @@
             0% { left: -100%; }
             100% { left: 100%; }
         }
-        .header-left, .header-right {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-        }
-        .header-center {
-            flex: 2;
-        }
         header h1 {
             margin: 0;
             font-size: 36px;
             font-weight: bold;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
             letter-spacing: 1px;
-            position: relative;
-            z-index: 2;
-        }
-        .svg-icon {
-            width: 120px;
-            height: 60px;
-            filter: drop-shadow(2px 2px 3px rgba(0,0,0,0.2));
-            transition: transform 0.3s ease;
-        }
-        .svg-icon:hover {
-            transform: scale(1.05);
-        }
-        .header-left .svg-icon:nth-child(1) {
-            animation: float 3s ease-in-out infinite;
-        }
-        .header-left .svg-icon:nth-child(2) {
-            animation: float 3s ease-in-out infinite 0.5s;
-        }
-        .header-right .svg-icon:nth-child(1) {
-            animation: float 3s ease-in-out infinite 1s;
-        }
-        .header-right .svg-icon:nth-child(2) {
-            animation: float 3s ease-in-out infinite 1.5s;
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-5px); }
         }
         nav {
             background-color: #2980b9;
@@ -166,35 +127,94 @@
             color: #7f8c8d;
         }
         .directory {
+            display: flex;
+            justify-content: space-between;
+            align-items: stretch;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            border: 1px solid rgba(52, 152, 219, 0.1);
+        }
+        .directory-content {
+            flex: 3;
             background-color: #f8f9fa;
             padding: 25px;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
+        }
+        .directory-sidebar {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 160px;
+        }
+        .sidebar-image {
+            width: 140px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+        }
+        
+        .sidebar-image:hover {
+            transform: scale(1.08) translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.25);
         }
         .directory h2 {
             color: #2c3e50;
             margin-top: 0;
             text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(52, 152, 219, 0.2);
+            margin-bottom: 25px;
         }
         .directory ul {
             list-style-type: none;
             padding: 0;
         }
         .directory li {
-            margin: 10px 0;
-            padding: 10px;
-            background-color: white;
-            border-radius: 4px;
-            border-left: 4px solid #3498db;
+            margin: 12px 0;
+            padding: 15px 20px;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 8px;
+            border-left: 5px solid #3498db;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .directory li:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            background: linear-gradient(135deg, #ffffff 0%, #e3f2fd 100%);
+        }
+        
+        .file-number {
+            font-weight: bold;
+            color: #3498db;
+            margin-right: 15px;
+            min-width: 30px;
+            font-size: 18px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
         .directory a {
-            color: #3498db;
+            color: #2980b9;
             text-decoration: none;
             font-weight: bold;
+            font-size: 16px;
+            transition: all 0.3s ease;
         }
         .directory a:hover {
-            text-decoration: underline;
+            color: #1f618d;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
         footer {
             background-color: #34495e;
@@ -206,35 +226,12 @@
         /* 响应式设计 - 手机设备 */
         @media (max-width: 768px) {
             header {
-                flex-direction: row;
                 padding: 15px 10px;
-                flex-wrap: nowrap;
-            }
-            
-            .header-left, .header-right {
-                flex: 1;
-                display: flex;
-                justify-content: center;
-                gap: 5px;
-            }
-            
-            .header-center {
-                flex: 2;
-                display: flex;
-                align-items: center;
-                justify-content: center;
             }
             
             header h1 {
-                font-size: 18px;
-                margin: 0;
-                white-space: nowrap;
+                font-size: 24px;
                 text-align: center;
-            }
-            
-            .svg-icon {
-                width: 60px;
-                height: 30px;
             }
             
             nav ul {
@@ -245,21 +242,24 @@
             nav li {
                 margin: 5px;
             }
+            
+            .directory {
+                flex-direction: column;
+            }
+            
+            .directory-sidebar {
+                display: none;
+            }
+            
+            .directory-content {
+                margin: 0;
+            }
         }
         
         /* 超小屏幕设备 */
         @media (max-width: 480px) {
             header h1 {
-                font-size: 16px;
-            }
-            
-            .svg-icon {
-                width: 50px;
-                height: 25px;
-            }
-            
-            .header-left, .header-right {
-                gap: 3px;
+                font-size: 20px;
             }
         }
     </style>
@@ -267,63 +267,7 @@
 <body>
     <div class="container">
         <header>
-            <div class="header-left">
-                <!-- 化学仪器图案1 -->
-                <svg class="svg-icon" viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="10" y="15" width="8" height="30" rx="4" fill="none" stroke="white" stroke-width="1.5"/>
-                    <rect x="10" y="35" width="8" height="10" fill="white" opacity="0.7"/>
-                    <path d="M30 15 L30 25 L25 40 L35 40 L30 25" fill="none" stroke="white" stroke-width="1.5"/>
-                    <rect x="26" y="35" width="8" height="5" fill="white" opacity="0.7"/>
-                    <circle cx="55" cy="35" r="8" fill="none" stroke="white" stroke-width="1.5"/>
-                    <rect x="52" y="15" width="6" height="12" fill="none" stroke="white" stroke-width="1.5"/>
-                    <path d="M50 35 Q55 40 60 35" fill="white" opacity="0.7"/>
-                </svg>
-                
-                <!-- 化学仪器图案2 - 变化1 -->
-                <svg class="svg-icon" viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="15" y="18" width="6" height="25" rx="3" fill="none" stroke="white" stroke-width="1.5"/>
-                    <rect x="15" y="33" width="6" height="10" fill="white" opacity="0.7"/>
-                    <path d="M35 18 L35 28 L30 43 L40 43 L35 28" fill="none" stroke="white" stroke-width="1.5"/>
-                    <rect x="31" y="38" width="8" height="5" fill="white" opacity="0.7"/>
-                    <circle cx="60" cy="38" r="7" fill="none" stroke="white" stroke-width="1.5"/>
-                    <rect x="57" y="18" width="6" height="12" fill="none" stroke="white" stroke-width="1.5"/>
-                    <path d="M55 38 Q60 43 65 38" fill="white" opacity="0.7"/>
-                </svg>
-            </div>
-            <div class="header-center">
-                <h1>欢迎来到科学课课件网站</h1>
-            </div>
-            <div class="header-right">
-                <!-- 物理图案1 -->
-                <svg class="svg-icon" viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M10 40 L40 20 L40 40 Z" fill="none" stroke="white" stroke-width="1.5"/>
-                    <rect x="50" y="25" width="12" height="12" fill="none" stroke="white" stroke-width="1.5"/>
-                    <circle cx="75" cy="35" r="6" fill="none" stroke="white" stroke-width="1.5"/>
-                    <ellipse cx="100" cy="30" rx="15" ry="5" fill="none" stroke="white" stroke-width="1.5"/>
-                    <ellipse cx="100" cy="30" rx="5" ry="15" fill="none" stroke="white" stroke-width="1.5"/>
-                    <ellipse cx="100" cy="30" rx="10" ry="10" fill="none" stroke="white" stroke-width="1.5" transform="rotate(45 100 30)"/>
-                    <circle cx="100" cy="30" r="3" fill="white"/>
-                    <circle cx="85" cy="30" r="2" fill="white"/>
-                    <circle cx="115" cy="30" r="2" fill="white"/>
-                    <circle cx="100" cy="15" r="2" fill="white"/>
-                    <circle cx="100" cy="45" r="2" fill="white"/>
-                </svg>
-                
-                <!-- 物理图案2 - 变化1 -->
-                <svg class="svg-icon" viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M15 35 L45 15 L45 35 Z" fill="none" stroke="white" stroke-width="1.5"/>
-                    <rect x="55" y="20" width="12" height="12" fill="none" stroke="white" stroke-width="1.5"/>
-                    <circle cx="80" cy="30" r="6" fill="none" stroke="white" stroke-width="1.5"/>
-                    <ellipse cx="105" cy="25" rx="15" ry="5" fill="none" stroke="white" stroke-width="1.5"/>
-                    <ellipse cx="105" cy="25" rx="5" ry="15" fill="none" stroke="white" stroke-width="1.5"/>
-                    <ellipse cx="105" cy="25" rx="10" ry="10" fill="none" stroke="white" stroke-width="1.5" transform="rotate(45 105 25)"/>
-                    <circle cx="105" cy="25" r="3" fill="white"/>
-                    <circle cx="90" cy="25" r="2" fill="white"/>
-                    <circle cx="120" cy="25" r="2" fill="white"/>
-                    <circle cx="105" cy="10" r="2" fill="white"/>
-                    <circle cx="105" cy="40" r="2" fill="white"/>
-                </svg>
-            </div>
+            <h1>蓝色诺瓦科学课练习资料</h1>
         </header>
         
         
@@ -332,12 +276,33 @@
             
             
             <section class="directory">
-                <h2>文件目录</h2>
-                <ul>
-                    <li><a href="G9物理上学期期末考试大纲20251219.html" target="_blank">G9物理上学期期末考试大纲20251219</a></li>
-                    <li><a href="G11物理电学课件20251216.html" target="_blank">G11物理电学课件20251216</a></li>
-                    <li><a href="G11电流与串并联电路课件20251223.html" target="_blank">G11电流与串并联电路课件20251223</a></li>
-                </ul>
+                <div class="directory-sidebar">
+                    <img src="ims (12).webp" alt="科学图片1" class="sidebar-image">
+                    <img src="ims (13).webp" alt="科学图片2" class="sidebar-image">
+                    <img src="ims.webp" alt="科学图片3" class="sidebar-image">
+                    <img src="ims (2).webp" alt="科学图片4" class="sidebar-image">
+                    <img src="ims (3).webp" alt="科学图片5" class="sidebar-image">
+                    <img src="ims (4).webp" alt="科学图片6" class="sidebar-image">
+                </div>
+                <div class="directory-content">
+                    <h2>文件目录</h2>
+                    <!-- 新文件请添加在列表顶端，并使用递增的编号（最新文件编号最大） -->
+                                        <ul>
+                                        <li><span class="file-number">6.</span> <a href="G9化学课件-原子结构示意图20251226.html" target="_blank">G9化学课件-原子结构示意图20251226</a></li>
+                                        <li><span class="file-number">5.</span> <a href="G9化学课件-化合价20251226.html" target="_blank">G9化学课件-化合价20251226</a></li>
+                                        <li><span class="file-number">4.</span> <a href="G9化学课件-原子结构示意图20251226.html" target="_blank">G9化学课件-原子结构示意图20251226</a></li>
+                                        <li><span class="file-number">3.</span> <a href="G11电流与串并联电路课件20251223.html" target="_blank">G11电流与串并联电路课件20251223</a></li>
+                                        <li><span class="file-number">2.</span> <a href="G11物理电学课件20251216.html" target="_blank">G11物理电学课件20251216</a></li>
+                                        <li><span class="file-number">1.</span> <a href="G9物理上学期期末考试大纲20251219.html" target="_blank">G9物理上学期期末考试大纲20251219</a></li>
+                                    </ul>                </div>
+                <div class="directory-sidebar">
+                    <img src="ims (5).webp" alt="科学图片7" class="sidebar-image">
+                    <img src="ims (6).webp" alt="科学图片8" class="sidebar-image">
+                    <img src="ims (7).webp" alt="科学图片9" class="sidebar-image">
+                    <img src="ims (8).webp" alt="科学图片10" class="sidebar-image">
+                    <img src="ims (9).webp" alt="科学图片11" class="sidebar-image">
+                    <img src="ims (10).webp" alt="科学图片12" class="sidebar-image">
+                </div>
             </section>
             
             
