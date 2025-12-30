@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>G11物理课件 - 精密测量与电路分析</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #10b981;
+            --accent-color: #ef4444;
+            --dark-color: #1f2937;
+            --light-bg: #f3f4f6;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px 0;
+        }
+
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 2.8rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            margin: 15px 0 0 0;
+            font-size: 1.3rem;
+            opacity: 0.9;
+        }
+
+        .content-wrapper {
+            padding: 30px;
+        }
+
+        .section-card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            border-left: 5px solid var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .section-title {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .formula-box {
+            background: var(--light-bg);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .formula {
+            font-size: 1.4rem;
+            font-weight: bold;
+            text-align: center;
+            margin: 20px 0;
+            font-family: 'Times New Roman', serif;
+            color: var(--dark-color);
+        }
+
+        .interactive-demo {
+            background: linear-gradient(135deg, #e0f2fe 0%, #ddd6fe 100%);
+            border-radius: 16px;
+            padding: 30px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .tool-simulator {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px auto;
+            max-width: 900px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .measurement-display {
+            background: var(--dark-color);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-align: center;
+            margin: 25px 0;
+        }
+
+        .circuit-diagram {
+            background: white;
+            border: 3px solid var(--primary-color);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+            text-align: center;
+        }
+
+        .quiz-section {
+            background: linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%);
+            border-radius: 16px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .quiz-question {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .quiz-option {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            background: var(--light-bg);
+            border: 2px solid transparent;
+            border-radius: 10px;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        .quiz-option:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateX(8px);
+        }
+
+        .quiz-option.correct {
+            background: var(--secondary-color);
+            color: white;
+            border-color: #059669;
+        }
+
+        .quiz-option.incorrect {
+            background: var(--accent-color);
+            color: white;
+            border-color: #dc2626;
+        }
+
+        .tips-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+        }
+
+        .tips-box h5 {
+            color: #92400e;
+            margin-bottom: 15px;
+        }
+
+        .conclusion-box {
+            background: #d1ecf1;
+            border-left: 4px solid #0c5460;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .derivation-step {
+            background: #f8f9fa;
+            border-left: 4px solid #007bff;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .derivation-step h6 {
+            color: #007bff;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .progress-container {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .progress {
+            height: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            font-size: 1.1rem;
+            font-weight: bold;
+            line-height: 30px;
+        }
+
+        .footer {
+            background: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        .nav-pills {
+            background: var(--light-bg);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 30px;
+        }
+
+        .nav-pills .nav-link {
+            border-radius: 10px;
+            padding: 12px 25px;
+            margin: 0 5px;
+            font-weight: 600;
+            color: var(--dark-color);
+            transition: all 0.3s ease;
+        }
+
+        .nav-pills .nav-link:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .nav-pills .nav-link.active {
+            background: var(--primary-color);
+            color: white;
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .instrument-image {
+            background: var(--light-bg);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .table-responsive {
+            margin: 20px 0;
+        }
+
+        .table {
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .table thead th {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+        }
+
+        .alert {
+            border-radius: 10px;
+            border: none;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .section-card {
+                padding: 20px;
+            }
+            
+            .nav-pills .nav-link {
+                padding: 8px 15px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="header">
+            <h1><i class="fas fa-atom"></i> G11物理课件</h1>
+            <p>精密测量仪器与电路内阻详解</p>
+        </div>
+
+        <div class="content-wrapper">
+            <ul class="nav nav-pills" id="mainNav" role="tablist">
+                <li class="nav-item">
+                    <button class="nav-link active" onclick="showTab('vernier')">
+                        <i class="fas fa-ruler"></i> 游标卡尺
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link" onclick="showTab('micrometer')">
+                        <i class="fas fa-search"></i> 螺旋测微器
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link" onclick="showTab('circuit')">
+                        <i class="fas fa-bolt"></i> 电路内阻
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link" onclick="showTab('quiz')">
+                        <i class="fas fa-question-circle"></i> 练习测试
+                    </button>
+                </li>
+            </ul>
+
+            <!-- 游标卡尺内容 -->
+            <div id="vernier" class="tab-content active">
+                <div class="section-card">
+                    <h2 class="section-title">
+                        <i class="fas fa-book"></i> 游标卡尺基本原理
+                    </h2>
+                    <p>游标卡尺是一种精密测量长度工具，由主尺和游标组成，利用游标分度与主尺分度的微小差值来提高测量精度。</p>
+                    
+                    <div class="image-container text-center my-4">
+                        <img src="ims.jpg" alt="游标卡尺实物图" class="img-fluid rounded shadow" style="max-height: 300px; border: 3px solid #3498db;">
+                        <p class="mt-2 text-muted"><strong>游标卡尺实物图</strong></p>
+                    </div>
+                    
+                    <div class="formula-box">
+                        <h5><i class="fas fa-calculator"></i> 游标卡尺读数公式</h5>
+                        <div class="formula">L = L<sub>主</sub> + n × ΔL</div>
+                        <p><strong>其中：</strong></p>
+                        <ul>
+                            <li>L<sub>主</sub> - 主尺读数</li>
+                            <li>n - 游标对齐刻度</li>
+                            <li>ΔL - 游标卡尺的最小分度值</li>
+                        </ul>
+                    </div>
+
+                    <div class="tips-box">
+                        <h5><i class="fas fa-lightbulb"></i> 使用技巧</h5>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <ul>
+                                    <li>10分度游标卡尺精度为0.1mm</li>
+                                    <li>20分度游标卡尺精度为0.05mm</li>
+                                    <li>50分度游标卡尺精度为0.02mm</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <ul>
+                                    <li>读数时不需要估读</li>
+                                    <li>测量前要检查零点误差</li>
+                                    <li>测量力度要适当</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+
+                <div class="section-card">
+                    <h2 class="section-title">
+                        <i class="fas fa-tasks"></i> 读数步骤详解
+                    </h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="alert alert-info">
+                                <h6><strong>步骤1：</strong>确定整毫米数</h6>
+                                <p>读取主尺上游标零线左侧的整毫米数</p>
+                            </div>
+                            <div class="alert alert-info">
+                                <h6><strong>步骤2：</strong>观察游标对齐</h6>
+                                <p>找到游标上与主尺对齐的刻度线</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="alert alert-info">
+                                <h6><strong>步骤3：</strong>计算游标读数</h6>
+                                <p>对齐刻度 × 精度 = 游标读数</p>
+                            </div>
+                            <div class="alert alert-info">
+                                <h6><strong>步骤4：</strong>得出最终结果</h6>
+                                <p>主尺读数 + 游标读数 = 测量值</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 螺旋测微器内容 -->
+            <div id="micrometer" class="tab-content">
+                <div class="section-card">
+                    <h2 class="section-title">
+                        <i class="fas fa-book"></i> 螺旋测微器基本原理
+                    </h2>
+                    <p>螺旋测微器（千分尺）利用螺旋放大原理，将测微螺杆的微小旋转转换为较大的直线位移，从而实现精密测量。</p>
+                    
+                    <div class="image-container text-center my-4">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img src="螺旋.webp" alt="螺旋测微器结构示意图" class="img-fluid rounded shadow mb-3" style="max-height: 250px; border: 3px solid #e74c3c;">
+                                <p class="text-muted"><strong>螺旋测微器结构示意图</strong></p>
+                            </div>
+                            <div class="col-md-6">
+                                <img src="ims (1).webp" alt="螺旋测微器实物图" class="img-fluid rounded shadow mb-3" style="max-height: 250px; border: 3px solid #e74c3c;">
+                                <p class="text-muted"><strong>螺旋测微器实物图</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="formula-box">
+                        <h5><i class="fas fa-calculator"></i> 螺旋测微器读数公式</h5>
+                        <div class="formula">L = L<sub>固</sub> + L<sub>可</sub></div>
+                        <div class="formula">L<sub>固</sub> = L<sub>主</sub> + 0.5mm（如果超过半格）</div>
+                        <div class="formula">L<sub>可</sub> = n × 0.01mm</div>
+                        <p><strong>其中：</strong></p>
+                        <ul>
+                            <li>L<sub>固</sub> - 固定套管读数</li>
+                            <li>L<sub>可</sub> - 可动刻度读数</li>
+                            <li>n - 可动刻度对齐格数</li>
+                        </ul>
+                    </div>
+
+                    <div class="tips-box">
+                        <h5><i class="fas fa-exclamation-triangle"></i> 注意事项</h5>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <ul>
+                                    <li>精度为0.01mm，需要估读到0.001mm</li>
+                                    <li>测量前要检查零点误差</li>
+                                    <li>测量时用力要适当</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <ul>
+                                    <li>读数时要注意半毫米线</li>
+                                    <li>使用棘轮装置控制力度</li>
+                                    <li>避免温度影响测量精度</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="section-card">
+                    <h2 class="section-title">
+                        <i class="fas fa-exclamation-triangle"></i> 常见错误与纠正
+                    </h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="alert alert-danger">
+                                <h6><strong>错误1：</strong>忽略半毫米线</h6>
+                                <p><small>纠正：仔细观察半毫米线是否露出</small></p>
+                            </div>
+                            <div class="alert alert-danger">
+                                <h6><strong>错误2：</strong>读数时忘记估读</h6>
+                                <p><small>纠正：要估读到0.001mm</small></p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="alert alert-danger">
+                                <h6><strong>错误3：</strong>零点误差未校正</h6>
+                                <p><small>纠正：测量前先校准零点</small></p>
+                            </div>
+                            <div class="alert alert-danger">
+                                <h6><strong>错误4：</strong>测量力度不当</h6>
+                                <p><small>纠正：使用棘轮装置控制力度</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 电路内阻内容 -->
+            <div id="circuit" class="tab-content">
+                <div class="section-card">
+                    <h2 class="section-title">
+                        <i class="fas fa-book"></i> 电源内阻概念
+                    </h2>
+                    <p>电源内阻是指电源内部的等效电阻，它会影响电源的输出特性。当电源接入电路时，内阻会分担一部分电压，导致输出电压降低。</p>
+                    
+                    <div class="image-container text-center my-4">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img src="ims (3).webp" alt="直流电路原理图" class="img-fluid rounded shadow mb-3" style="max-height: 250px; border: 3px solid #2ecc71;">
+                                <p class="text-muted"><strong>直流电路原理图</strong></p>
+                                <small class="text-muted">电源与负载组成的闭合回路</small>
+                            </div>
+                            <div class="col-md-6">
+                                <img src="ims (2).webp" alt="U-I关系图" class="img-fluid rounded shadow mb-3" style="max-height: 250px; border: 3px solid #2ecc71;">
+                                <p class="text-muted"><strong>U-I特性曲线</strong></p>
+                                <small class="text-muted">路端电压随电流变化关系</small>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="formula-box">
+                        <h5><i class="fas fa-calculator"></i> 闭合电路欧姆定律</h5>
+                        <div class="formula">I = ℰ/(R + r)</div>
+                        <div class="formula">U = ℰ - Ir</div>
+                        <p><strong>其中：</strong></p>
+                        <ul>
+                            <li>ℰ - 电动势</li>
+                            <li>R - 外电路电阻</li>
+                            <li>r - 内阻</li>
+                            <li>U - 路端电压</li>
+                            <li>I - 电路电流</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section-card">
+                    <h2 class="section-title">
+                        <i class="fas fa-calculator"></i> 内阻测量方法
+                    </h2>
+                    
+                    <div class="alert alert-info">
+                        <h5><i class="fas fa-flask"></i> 方法一：伏安法</h5>
+                        <ol>
+                            <li>测量不同外电阻下的电压和电流</li>
+                            <li>绘制U-I图像</li>
+                            <li>图像斜率的绝对值即为内阻 r = |ΔU/ΔI|</li>
+                        </ol>
+                    </div>
+
+                    <div class="alert alert-success">
+                        <h5><i class="fas fa-vial"></i> 方法二：半偏法</h5>
+                        <ol>
+                            <li>调节变阻器使电压表读数为电动势的一半</li>
+                            <li>此时外电阻等于内阻 R = r</li>
+                            <li>读取变阻器阻值即为内阻</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="interactive-demo">
+                    <h3><i class="fas fa-chart-line"></i> U-I特性曲线模拟</h3>
+                    <div class="tool-simulator">
+                        <canvas id="uiChart" width="400" height="300"></canvas>
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <label class="form-label"><strong>电动势 ℰ (V):</strong></label>
+                                <input type="range" class="form-range" id="emf" min="1" max="12" value="6" step="0.1" oninput="updateChart()">
+                                <div class="text-center">
+                                    <span id="emfValue" class="badge bg-primary">6.0 V</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label"><strong>内阻 r (Ω):</strong></label>
+                                <input type="range" class="form-range" id="internalR" min="0.1" max="5" value="1" step="0.1" oninput="updateChart()">
+                                <div class="text-center">
+                                    <span id="internalRValue" class="badge bg-primary">1.0 Ω</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-card">
+                    <h2 class="section-title">
+                        <i class="fas fa-lightbulb"></i> 内阻对电路的影响
+                    </h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="alert alert-info">
+                                <h6><strong>输出功率最大条件 - 详细推导</strong></h6>
+                                
+                                <div class="derivation-step">
+                                    <h6>第一步：建立功率表达式</h6>
+                                    <div class="formula">P<sub>出</sub> = I²R</div>
+                                    <p>根据闭合电路欧姆定律：I = ℰ/(R+r)</p>
+                                    <div class="formula">P<sub>出</sub> = (ℰ/(R+r))² × R = ℰ²R/(R+r)²</div>
+                                </div>
+
+                                <div class="derivation-step">
+                                    <h6>第二步：数学分析（求极值）</h6>
+                                    <p>将功率表达式看作关于外电阻R的函数：</p>
+                                    <div class="formula">P(R) = ℰ²R/(R+r)²</div>
+                                    <p>对R求导数并令导数为零：</p>
+                                    <div class="formula">dP/dR = ℰ²[(R+r)² - 2R(R+r)]/(R+r)⁴ = 0</div>
+                                    <div class="formula">(R+r)² - 2R(R+r) = 0</div>
+                                    <div class="formula">R² + 2Rr + r² - 2R² - 2Rr = 0</div>
+                                    <div class="formula">-R² + r² = 0</div>
+                                    <div class="formula">R² = r²</div>
+                                    <div class="formula">R = r （R > 0，r > 0）</div>
+                                </div>
+
+                                <div class="derivation-step">
+                                    <h6>第三步：验证极值性质</h6>
+                                    <p>求二阶导数判断极值性质：</p>
+                                    <div class="formula">d²P/dR² = -2ℰ²r²/(R+r)⁴</div>
+                                    <p>当R = r时，d²P/dR² = -2ℰ²r²/(2r)⁴ = -2ℰ²r²/16r⁴ = -ℰ²/8r² < 0</p>
+                                    <p>二阶导数小于零，说明R = r时功率取得极大值。</p>
+                                </div>
+
+                                <div class="derivation-step">
+                                    <h6>第四步：计算最大功率值</h6>
+                                    <p>将R = r代入功率表达式：</p>
+                                    <div class="formula">P<sub>max</sub> = ℰ²r/(r+r)² = ℰ²r/(2r)² = ℰ²r/4r²</div>
+                                    <div class="formula">P<sub>max</sub> = ℰ²/4r</div>
+                                </div>
+
+                                <div class="conclusion-box">
+                                    <h6>结论</h6>
+                                    <p>✅ <strong>当外电阻等于内阻时，电源输出功率达到最大值</strong></p>
+                                    <p>✅ <strong>最大功率为：P<sub>max</sub> = ℰ²/4r</strong></p>
+                                    <p>✅ <strong>此时电源效率为50%</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="alert alert-warning">
+                                <h6><strong>电源效率</strong></h6>
+                                <p>η = R/(R + r) × 100%</p>
+                                <p>当 R >> r 时，效率接近100%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 练习测试内容 -->
+            <div id="quiz" class="tab-content">
+                <div class="quiz-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-graduation-cap"></i> 知识测试
+                    </h2>
+                    
+                    <div class="quiz-question">
+                        <h5>问题1：50分度游标卡尺的精度是多少？</h5>
+                        <button class="quiz-option" onclick="checkAnswer(this, false)">A. 0.05mm</button>
+                        <button class="quiz-option" onclick="checkAnswer(this, true)">B. 0.02mm</button>
+                        <button class="quiz-option" onclick="checkAnswer(this, false)">C. 0.01mm</button>
+                        <button class="quiz-option" onclick="checkAnswer(this, false)">D. 0.1mm</button>
+                    </div>
+
+                    <div class="quiz-question">
+                        <h5>问题2：螺旋测微器的精度是多少？</h5>
+                        <button class="quiz-option" onclick="checkAnswer(this, false)">A. 0.1mm</button>
+                        <button class="quiz-option" onclick="checkAnswer(this, false)">B. 0.05mm</button>
+                        <button class="quiz-option" onclick="checkAnswer(this, true)">C. 0.01mm</button>
+                        <button class="quiz-option" onclick="checkAnswer(this, false)">D. 0.001mm</button>
+                    </div>
+
+                    <div class="quiz-question">
+                        <h5>问题3：电源输出功率最大的条件是？</h5>
+                        <button class="quiz-option" onclick="checkAnswer(this, false)">A. R = 2r</button>
+                        <button class="quiz-option" onclick="checkAnswer(this, true)">B. R = r</button>
+                        <button class="quiz-option" onclick="checkAnswer(this, false)">C. R = r/2</button>
+                        <button class="quiz-option" onclick="checkAnswer(this, false)">D. R >> r</button>
+                    </div>
+
+                    <div class="quiz-question">
+                        <h5>问题4：闭合电路欧姆定律的表达式是？</h5>
+                        <button class="quiz-option" onclick="checkAnswer(this, false)">A. I = U/R</button>
+                        <button class="quiz-option" onclick="checkAnswer(this, false)">B. U = IR</button>
+                        <button class="quiz-option" onclick="checkAnswer(this, true)">C. I = ℰ/(R + r)</button>
+                        <button class="quiz-option" onclick="checkAnswer(this, false)">D. P = UI</button>
+                    </div>
+                </div>
+
+                <div class="progress-container">
+                    <h3><i class="fas fa-trophy"></i> 学习成果</h3>
+                    <div class="progress mb-3">
+                        <div class="progress-bar" role="progressbar" style="width: 0%" id="progressBar">0%</div>
+                    </div>
+                    <p id="scoreDisplay">开始答题查看你的学习成果！</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2024 G11物理课件 | 精密测量与电路分析</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // 标签页切换功能
+        function showTab(tabId) {
+            // 隐藏所有标签页内容
+            const allTabs = document.querySelectorAll('.tab-content');
+            allTabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // 移除所有导航按钮的活动状态
+            const allButtons = document.querySelectorAll('.nav-link');
+            allButtons.forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // 显示目标标签页
+            const targetTab = document.getElementById(tabId);
+            if (targetTab) {
+                targetTab.classList.add('active');
+            }
+            
+            // 激活对应按钮
+            const targetButton = document.querySelector(`[onclick="showTab('${tabId}')"]`);
+            if (targetButton) {
+                targetButton.classList.add('active');
+            }
+        }
+
+
+
+        // U-I特性曲线
+        let uiChart;
+        
+        function updateChart() {
+            const emf = parseFloat(document.getElementById('emf').value);
+            const internalR = parseFloat(document.getElementById('internalR').value);
+            
+            document.getElementById('emfValue').textContent = `${emf.toFixed(1)} V`;
+            document.getElementById('internalRValue').textContent = `${internalR.toFixed(1)} Ω`;
+
+            const data = [];
+            for (let R = 0.1; R <= 10; R += 0.1) {
+                const I = emf / (R + internalR);
+                const U = emf - I * internalR;
+                data.push({x: I, y: U});
+            }
+
+            const ctx = document.getElementById('uiChart');
+            if (ctx) {
+                if (uiChart) {
+                    uiChart.destroy();
+                }
+
+                uiChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        datasets: [{
+                            label: 'U-I特性曲线',
+                            data: data,
+                            borderColor: 'rgb(37, 99, 235)',
+                            backgroundColor: 'rgba(37, 99, 235, 0.2)',
+                            tension: 0.1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: '路端电压随电流变化关系'
+                            }
+                        },
+                        scales: {
+                            x: {
+                                type: 'linear',
+                                position: 'bottom',
+                                title: {
+                                    display: true,
+                                    text: '电流 I (A)'
+                                }
+                            },
+                            y: {
+                                title: {
+                                    display: true,
+                                    text: '电压 U (V)'
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        }
+
+        // 测试功能
+        let correctAnswers = 0;
+        let totalQuestions = 0;
+
+        function checkAnswer(button, isCorrect) {
+            const options = button.parentElement.querySelectorAll('.quiz-option');
+            options.forEach(opt => opt.disabled = true);
+            
+            if (isCorrect) {
+                button.classList.add('correct');
+                correctAnswers++;
+            } else {
+                button.classList.add('incorrect');
+            }
+            
+            totalQuestions++;
+            updateProgress();
+        }
+
+        function updateProgress() {
+            const percentage = totalQuestions > 0 ? (correctAnswers / totalQuestions * 100) : 0;
+            const progressBar = document.getElementById('progressBar');
+            const scoreDisplay = document.getElementById('scoreDisplay');
+            
+            progressBar.style.width = percentage + '%';
+            progressBar.textContent = percentage.toFixed(0) + '%';
+            
+            let message = '';
+            if (percentage >= 80) {
+                message = '优秀！你对这些知识点掌握得很好！';
+            } else if (percentage >= 60) {
+                message = '良好！继续努力，你可以做得更好！';
+            } else if (percentage >= 40) {
+                message = '及格！建议多复习一下相关内容。';
+            } else if (totalQuestions > 0) {
+                message = '需要加强学习！请仔细阅读课件内容。';
+            } else {
+                message = '开始答题查看你的学习成果！';
+            }
+            
+            scoreDisplay.textContent = `得分：${correctAnswers}/${totalQuestions} (${percentage.toFixed(0)}%) - ${message}`;
+        }
+
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            updateChart();
+            updateVernier();
+            updateMicrometer();
+        });
+    </script>
+</body>
+</html>
