@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>G9化学-化合物中元素质量分数</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: "Microsoft YaHei", "微软雅黑", "PingFang SC", "Hiragino Sans GB", sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #74b9ff 0%, #a29bfe 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+        
+        .header {
+            text-align: center;
+            padding-bottom: 30px;
+            border-bottom: 3px solid #74b9ff;
+            margin-bottom: 35px;
+        }
+        
+        h1 {
+            font-size: 32px;
+            color: #74b9ff;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: 16px;
+            color: #636e72;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            font-size: 24px;
+            color: #2d3436;
+            margin: 25px 0 15px 0;
+            padding-left: 15px;
+            border-left: 5px solid #74b9ff;
+            font-weight: 600;
+        }
+        
+        .definition-box {
+            background: linear-gradient(135deg, #74b9ff 0%, #a29bfe 100%);
+            color: white;
+            padding: 25px 30px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 20px rgba(116, 185, 255, 0.3);
+        }
+        
+        .formula-box {
+            background-color: #f8f9fa;
+            border-left: 5px solid #00b894;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            font-family: "Courier New", monospace;
+            font-size: 18px;
+            text-align: center;
+        }
+        
+        .example-box {
+            background-color: #e3f2fd;
+            border: 1px solid #bbdefb;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        
+        .step {
+            margin: 15px 0;
+            padding-left: 20px;
+            border-left: 3px solid #74b9ff;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        th, td {
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+        
+        th {
+            background: linear-gradient(135deg, #74b9ff 0%, #a29bfe 100%);
+            color: white;
+            font-weight: 600;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        .exercise {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        
+        .exercise h3 {
+            color: #d35400;
+            margin-bottom: 10px;
+        }
+        
+        .highlight {
+            color: #e17055;
+            font-weight: 600;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 25px;
+            border-top: 2px solid #ecf0f1;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+        
+        .calculator {
+            background-color: #e8f4fc;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .calculator input, .calculator button {
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        
+        .calculator button {
+            background: linear-gradient(135deg, #74b9ff 0%, #a29bfe 100%);
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .calculator button:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>G9化学-化合物中元素质量分数</h1>
+            <div class="subtitle">Chemistry for Grade 9 - Mass Fraction of Elements in Compounds</div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">什么是质量分数？</h2>
+            <div class="definition-box">
+                <h3>定义</h3>
+                <p>G9化学中，化合物中某元素的质量分数是指该元素的质量占化合物总质量的百分比。</p>
+            </div>
+            
+            <p>质量分数是化学计算中的一个重要概念，它帮助我们了解化合物中各元素的含量比例。</p>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">计算公式</h2>
+            <div class="formula-box">
+                某元素的质量分数 = (该元素的相对原子质量 × 该元素的原子个数 ÷ 化合物的相对分子质量) × 100%
+            </div>
+            
+            <p>其中：</p>
+            <ul style="margin: 15px 0 15px 40px;">
+                <li>某元素的质量分数 = (该元素的相对原子质量 × 该元素的原子个数) ÷ 化合物的相对分子质量 × 100%</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">常见元素的相对原子质量</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>元素</th>
+                        <th>符号</th>
+                        <th>相对原子质量</th>
+                        <th>元素</th>
+                        <th>符号</th>
+                        <th>相对原子质量</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>氢</td>
+                        <td>H</td>
+                        <td>1</td>
+                        <td>碳</td>
+                        <td>C</td>
+                        <td>12</td>
+                    </tr>
+                    <tr>
+                        <td>氮</td>
+                        <td>N</td>
+                        <td>14</td>
+                        <td>氧</td>
+                        <td>O</td>
+                        <td>16</td>
+                    </tr>
+                    <tr>
+                        <td>钠</td>
+                        <td>Na</td>
+                        <td>23</td>
+                        <td>镁</td>
+                        <td>Mg</td>
+                        <td>24</td>
+                    </tr>
+                    <tr>
+                        <td>铝</td>
+                        <td>Al</td>
+                        <td>27</td>
+                        <td>硅</td>
+                        <td>Si</td>
+                        <td>28</td>
+                    </tr>
+                    <tr>
+                        <td>磷</td>
+                        <td>P</td>
+                        <td>31</td>
+                        <td>硫</td>
+                        <td>S</td>
+                        <td>32</td>
+                    </tr>
+                    <tr>
+                        <td>氯</td>
+                        <td>Cl</td>
+                        <td>35.5</td>
+                        <td>钾</td>
+                        <td>K</td>
+                        <td>39</td>
+                    </tr>
+                    <tr>
+                        <td>钙</td>
+                        <td>Ca</td>
+                        <td>40</td>
+                        <td>铁</td>
+                        <td>Fe</td>
+                        <td>56</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">计算步骤</h2>
+            <div class="step">
+                <strong>第一步：</strong> 确定化合物的化学式
+            </div>
+            <div class="step">
+                <strong>第二步：</strong> 查出各元素的相对原子质量
+            </div>
+            <div class="step">
+                <strong>第三步：</strong> 计算化合物的相对分子质量
+            </div>
+            <div class="step">
+                <strong>第四步：</strong> 确定目标元素在化合物中的原子个数
+            </div>
+            <div class="step">
+                <strong>第五步：</strong> 应用质量分数公式进行计算
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">例题解析</h2>
+            
+            <div class="example-box">
+                <h3>例题1：计算水（H<sub>2</sub>O）中氢元素和氧元素的质量分数</h3>
+                
+                <p><strong>解：</strong></p>
+                <div class="step">
+                    <strong>第一步：</strong> 确定化学式：H<sub>2</sub>O
+                </div>
+                <p><strong>第二步：</strong> 查相对原子质量：氢(H)的相对原子质量为1，氧(O)的相对原子质量为16</p>
+                <p><strong>第三步：</strong> 计算相对分子质量：水(H<sub>2</sub>O)的相对分子质量 = 2×氢的相对原子质量 + 氧的相对原子质量 = 2×1 + 16 = 18</p>
+                
+                <p><strong>氢元素的质量分数：</strong></p>
+                <div class="formula-box">
+                    氢元素的质量分数 = (氢的相对原子质量 × 水分子中氢原子个数 ÷ 水的相对分子质量) × 100% = (1×2 ÷ 18) × 100% = 11.1%
+                </div>
+                
+                <p><strong>氧元素的质量分数：</strong></p>
+                <div class="formula-box">
+                    氧元素的质量分数 = (氧的相对原子质量 × 水分子中氧原子个数 ÷ 水的相对分子质量) × 100% = (16×1 ÷ 18) × 100% = 88.9%
+                </div>
+                
+                <p><strong>验证：</strong> 11.1% + 88.9% = 100% ✓</p>
+            </div>
+            
+            <div class="example-box">
+                <h3>例题2：计算碳酸钙（CaCO<sub>3</sub>）中钙元素的质量分数</h3>
+                
+                <p><strong>解：</strong></p>
+                <div class="step">
+                    <strong>第一步：</strong> 确定化学式：CaCO<sub>3</sub>
+                </div>
+                <div class="step">
+                    <strong>第二步：</strong> 查相对原子质量：钙(Ca)的相对原子质量为40，碳(C)的相对原子质量为12，氧(O)的相对原子质量为16
+                </div>
+                <div class="step">
+                    <strong>第三步：</strong> 计算相对分子质量：碳酸钙(CaCO<sub>3</sub>)的相对分子质量 = 钙的相对原子质量 + 碳的相对原子质量 + 3×氧的相对原子质量 = 40 + 12 + 3×16 = 100
+                </div>
+                
+                <p><strong>钙元素的质量分数：</strong></p>
+                <div class="formula-box">
+                    钙元素的质量分数 = (钙的相对原子质量 × 碳酸钙中钙原子个数 ÷ 碳酸钙的相对分子质量) × 100% = (40×1 ÷ 100) × 100% = 40%
+                </div>
+                
+                <p>因此，碳酸钙中钙元素的质量分数为40%。</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">实际应用</h2>
+            <p>质量分数在化学中有广泛应用：</p>
+            <ul style="margin: 15px 0 15px 40px;">
+                <li><strong>工业生产：</strong>计算原料配比，如生产纯碱时需要知道原料中有效成分的含量</li>
+                <li><strong>环境保护：</strong>测定污染物浓度，如空气中二氧化硫的含量</li>
+                <li><strong>食品科学：</strong>检测食品中的营养成分，如蛋白质、脂肪含量</li>
+                <li><strong>医药领域：</strong>药品成分分析，确保药物有效成分的含量符合标准</li>
+                <li><strong>地质勘探：</strong>分析矿石中目标元素的含量，评估矿石价值</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">练习题</h2>
+            
+            <div class="exercise">
+                <h3>练习1</h3>
+                <p>计算二氧化碳（CO<sub>2</sub>）中碳元素和氧元素的质量分数。</p>
+                <p><strong>提示：</strong> 碳的相对原子质量为12，氧的相对原子质量为16</p>
+            </div>
+            
+            <div class="exercise">
+                <h3>练习2</h3>
+                <p>尿素[CO(NH<sub>2</sub>)<sub>2</sub>]是常用的氮肥，求尿素中氮元素的质量分数。</p>
+                <p><strong>提示：</strong> 碳的相对原子质量为12，氧的相对原子质量为16，氮的相对原子质量为14，氢的相对原子质量为1</p>
+            </div>
+            
+            <div class="exercise">
+                <h3>练习3</h3>
+                <p>某化肥主要成分为硝酸铵（NH<sub>4</sub>NO<sub>3</sub>），求其中氮元素的质量分数。</p>
+                <p><strong>提示：</strong> 氮的相对原子质量为14，氢的相对原子质量为1，氧的相对原子质量为16</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">解题技巧</h2>
+            <div class="highlight">
+                <p><strong>技巧1：</strong> 记住常见元素的相对原子质量，特别是H(1)、C(12)、N(14)、O(16)、S(32)、Cl(35.5)、Ca(40)、Fe(56)等。</p>
+                
+                <p><strong>技巧2：</strong> 计算相对分子质量时，注意化学式中各元素的原子个数，不要遗漏下标为1的原子。</p>
+                
+                <p><strong>技巧3：</strong> 计算完成后要进行验证，化合物中所有元素的质量分数之和应等于100%（允许小数点后的误差）。</p>
+                
+                <p><strong>技巧4：</strong> 对于化学方程式的计算，要注意化学方程式的配平，确保反应前后原子个数相等。</p>
+                
+                <p><strong>技巧5：</strong> 对于复杂化学式，可以先分组计算，再求和，如硫酸铜晶体CuSO<sub>4</sub>·5H<sub>2</sub>O。</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">拓展知识</h2>
+            <p>质量分数与质量比的关系：</p>
+            <ul style="margin: 15px 0 15px 40px;">
+                <li>质量分数是某元素质量占总质量的百分比</li>
+                <li>质量比是化合物中不同元素质量的比值</li>
+                <li>例如：水中氢元素与氧元素的质量比为 氢元素质量:氧元素质量 = 2:16 = 1:8</li>
+            </ul>
+            
+            <p>质量分数的用途：</p>
+            <ul style="margin: 15px 0 15px 40px;">
+                <li>可以用来确定化学式（已知元素质量比时）</li>
+                <li>可以计算一定质量的化合物中某元素的质量</li>
+                <li>可以比较不同化合物中同一元素的含量</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">利用化学方程式的简单计算</h2>
+            <p>在G9化学中，我们经常需要根据化学方程式进行计算，这是化学计算的重要内容之一。化学方程式不仅表示了物质之间的转化关系，还表示了各物质之间的质量关系。</p>
+            
+            <div class="formula-box">
+                <strong>根据化学方程式计算的一般步骤：</strong><br>
+                1. 设未知数<br>
+                2. 正确写出化学方程式<br>
+                3. 计算相关物质的相对分子质量<br>
+                4. 写出已知量和未知量<br>
+                5. 列出比例式并求解<br>
+                6. 简明地写出答案
+            </div>
+            
+            <h3>例题：实验室用碳酸钙(CaCO<sub>3</sub>)与稀盐酸(HCl)反应制取二氧化碳(CO<sub>2</sub>)，如果用20g碳酸钙与足量的稀盐酸反应，能够产生多少克二氧化碳？</h3>
+            
+            <div class="example-box">
+                <p><strong>解：</strong></p>
+                <p><strong>设：</strong> 生成二氧化碳的质量为x</p>
+                
+                <p><strong>写出化学方程式：</strong><br>
+                CaCO<sub>3</sub> + 2HCl = CaCl<sub>2</sub> + H<sub>2</sub>O + CO<sub>2</sub>↑</p>
+                
+                <p><strong>计算相对分子质量：</strong><br>
+                CaCO<sub>3</sub>的相对分子质量 = 40 + 12 + 16×3 = 100<br>
+                CO<sub>2</sub>的相对分子质量 = 12 + 16×2 = 44</p>
+                
+                <p><strong>列出已知量和未知量：</strong><br>
+                100 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 44<br>
+                CaCO<sub>3</sub> + 2HCl = CaCl<sub>2</sub> + H<sub>2</sub>O + CO<sub>2</sub>↑<br>
+                20g &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x</p>
+                
+                <p><strong>列比例式求解：</strong><br>
+                100/44 = 20/x<br>
+                x = (44×20)÷100 = 8.8g</p>
+                
+                <p><strong>答：</strong> 用20g碳酸钙与足量的稀盐酸反应，能够产生8.8克二氧化碳。</p>
+            </div>
+            
+            <h3>练习题</h3>
+            <div class="exercise">
+                <h3>练习1</h3>
+                <p>加热分解31.6g高锰酸钾(KMnO<sub>4</sub>)，可以得到多少克氧气？（反应方程式：2KMnO<sub>4</sub> = K<sub>2</sub>MnO<sub>4</sub> + MnO<sub>2</sub> + O<sub>2</sub>↑）<br>
+                提示：K=39，Mn=55，O=16</p>
+            </div>
+            
+            <div class="exercise">
+                <h3>练习2</h3>
+                <p>实验室用锌(Zn)与稀硫酸(H<sub>2</sub>SO<sub>4</sub>)反应制取氢气(H<sub>2</sub>)，化学方程式为：Zn + H<sub>2</sub>SO<sub>4</sub> = ZnSO<sub>4</sub> + H<sub>2</sub>↑。如果用13g锌与足量的稀硫酸反应，能够产生多少克氢气？<br>
+                提示：Zn=65，H=1</p>
+            </div>
+            
+            <div class="exercise">
+                <h3>练习3</h3>
+                <p>氢气在氯气(Cl<sub>2</sub>)中燃烧生成氯化氢(HCl)气体，化学方程式为：H<sub>2</sub> + Cl<sub>2</sub> = 2HCl。如果燃烧4g氢气，需要消耗多少克氯气？同时生成多少克氯化氢？<br>
+                提示：H=1，Cl=35.5</p>
+            </div>
+            
+            <h3>练习题解答</h3>
+            <div class="example-box">
+                <p><strong>练习1解答：</strong></p>
+                <p>设：生成氧气的质量为x</p>
+                <p>2KMnO<sub>4</sub> = K<sub>2</sub>MnO<sub>4</sub> + MnO<sub>2</sub> + O<sub>2</sub>↑</p>
+                <p>KMnO<sub>4</sub>的相对分子质量 = 39 + 55 + 16×4 = 158</p>
+                <p>O<sub>2</sub>的相对分子质量 = 16×2 = 32</p>
+                <p>2×158 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 32</p>
+                <p>2KMnO<sub>4</sub> = K<sub>2</sub>MnO<sub>4</sub> + MnO<sub>2</sub> + O<sub>2</sub>↑</p>
+                <p>31.6g &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x</p>
+                <p>(2×158)/32 = 31.6/x</p>
+                <p>x = (32×31.6)÷(2×158) = 3.2g</p>
+                <p><strong>答：</strong> 加热分解31.6g高锰酸钾，可以得到3.2克氧气。</p>
+            </div>
+            
+            <div class="example-box">
+                <p><strong>练习2解答：</strong></p>
+                <p>设：生成氢气的质量为x</p>
+                <p>Zn + H<sub>2</sub>SO<sub>4</sub> = ZnSO<sub>4</sub> + H<sub>2</sub>↑</p>
+                <p>Zn的相对原子质量 = 65</p>
+                <p>H<sub>2</sub>的相对分子质量 = 1×2 = 2</p>
+                <p>65 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2</p>
+                <p>Zn + H<sub>2</sub>SO<sub>4</sub> = ZnSO<sub>4</sub> + H<sub>2</sub>↑</p>
+                <p>13g &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x</p>
+                <p>65/2 = 13/x</p>
+                <p>x = (2×13)÷65 = 0.4g</p>
+                <p><strong>答：</strong> 用13g锌与足量的稀硫酸反应，能够产生0.4克氢气。</p>
+            </div>
+            
+            <div class="example-box">
+                <p><strong>练习3解答：</strong></p>
+                <p>设：消耗氯气的质量为x，生成氯化氢的质量为y</p>
+                <p>H<sub>2</sub> + Cl<sub>2</sub> = 2HCl</p>
+                <p>H<sub>2</sub>的相对分子质量 = 1×2 = 2</p>
+                <p>Cl<sub>2</sub>的相对分子质量 = 35.5×2 = 71</p>
+                <p>HCl的相对分子质量 = 1 + 35.5 = 36.5</p>
+                <p>2 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 71 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2×36.5</p>
+                <p>H<sub>2</sub> + Cl<sub>2</sub> = 2HCl</p>
+                <p>4g &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; y</p>
+                <p>2/71 = 4/x</p>
+                <p>x = (71×4)÷2 = 142g</p>
+                <p>2/(2×36.5) = 4/y</p>
+                <p>y = (2×36.5×4)÷2 = 146g</p>
+                <p><strong>答：</strong> 燃烧4g氢气，需要消耗142克氯气，同时生成146克氯化氢。</p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>G9化学课件 - 化合物中元素质量分数</p>
+            <p>© 2026 化学学习中心</p>
+        </div>
+    </div>
+</body>
+</html>
