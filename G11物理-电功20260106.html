@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>G11物理：串并联电路中的功率和做功</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #f6f9ff 0%, #e6f0ff 100%);
+            color: #2c3742;
+        }
+        .container {
+            max-width: 950px;
+            margin: 0 auto;
+            background: linear-gradient(to bottom, #ffffff, #f8fafd);
+            padding: 35px;
+            border-radius: 18px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            border: 1px solid #e1e8f0;
+        }
+        h1 {
+            background: linear-gradient(to right, #2980b9, #3498db);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 0;
+            font-size: 32px;
+            letter-spacing: 1px;
+            border-radius: 10px;
+        }
+        h2 {
+            color: #2c3e50;
+            border-left: 6px solid #9b59b6;
+            padding-left: 18px;
+            margin-top: 35px;
+            font-size: 24px;
+            background-color: #f5f9ff;
+            padding: 10px 15px;
+            border-radius: 0 8px 8px 0;
+        }
+        h2.section-electric-work {
+            color: #27ae60;
+            border-left: 6px solid #27ae60;
+            background-color: #f0f9f3;
+        }
+        h2.section-electric-power {
+            color: #e74c3c;
+            border-left: 6px solid #e74c3c;
+            background-color: #fdf0f0;
+        }
+        h2.section-properties {
+            color: #3498db;
+            border-left: 6px solid #3498db;
+            background-color: #f0f7ff;
+        }
+        h2.section-comparison {
+            color: #f39c12;
+            border-left: 6px solid #f39c12;
+            background-color: #fdf4e8;
+        }
+        h2.section-examples {
+            color: #9b59b6;
+            border-left: 6px solid #9b59b6;
+            background-color: #f8f0fa;
+        }
+        h2.section-exercises {
+            color: #16a085;
+            border-left: 6px solid #16a085;
+            background-color: #ebf9f5;
+        }
+        h3 {
+            color: #5d6d7e;
+            margin-top: 25px;
+            font-size: 20px;
+            border-bottom: 1px dashed #bdc3c7;
+            padding-bottom: 5px;
+        }
+        .formula {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            text-align: center;
+            font-size: 20px;
+            border-left: 5px solid #2196f3;
+            box-shadow: 0 4px 10px rgba(33, 150, 243, 0.15);
+            border: 1px solid #bbdefb;
+        }
+        .electric-work-section {
+            border: 2px solid #27ae60;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px 0;
+            background-color: rgba(39, 174, 96, 0.05);
+        }
+        .electric-power-section {
+            border: 2px solid #e74c3c;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px 0;
+            background-color: rgba(231, 76, 60, 0.05);
+        }
+        .properties-section {
+            border: 2px solid #3498db;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px 0;
+            background-color: rgba(52, 152, 219, 0.05);
+        }
+        .comparison-section {
+            border: 2px solid #f39c12;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px 0;
+            background-color: rgba(243, 156, 18, 0.05);
+        }
+        .examples-section {
+            border: 2px solid #9b59b6;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px 0;
+            background-color: rgba(155, 89, 182, 0.05);
+        }
+        .exercises-section {
+            border: 2px solid #16a085;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px 0;
+            background-color: rgba(22, 160, 133, 0.05);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        th, td {
+            border: 1px solid #a0c4e3;
+            padding: 16px;
+            text-align: center;
+        }
+        th {
+            background: linear-gradient(to bottom, #3498db, #2980b9);
+            color: white;
+            font-weight: bold;
+            font-size: 17px;
+        }
+        tr:nth-child(even) {
+            background: linear-gradient(to bottom, #f0f7ff, #e6f2ff);
+        }
+        tr:nth-child(odd) {
+            background: linear-gradient(to bottom, #ffffff, #f8fbff);
+        }
+        .example {
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            padding: 22px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 6px solid #4caf50;
+            border: 1px solid #c8e6c9;
+        }
+        .practice {
+            background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%);
+            padding: 22px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 6px solid #ffc107;
+            border: 1px solid #ffecb3;
+        }
+        .highlight {
+            background: linear-gradient(to right, #ffeaa7, #fdcb6e);
+            padding: 5px 10px;
+            border-radius: 6px;
+            font-weight: bold;
+            color: #2d3436;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        ul {
+            margin: 12px 0;
+            padding-left: 28px;
+        }
+        li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        p {
+            margin-bottom: 12px;
+        }
+        .answer-button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .answer-button:hover {
+            background-color: #2980b9;
+        }
+        .answer-content {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-left: 4px solid #3498db;
+            border-radius: 0 5px 5px 0;
+        }
+    </style>
+    <script>
+        function toggleAnswer(answerId) {
+            var answerDiv = document.getElementById(answerId);
+            if (answerDiv.style.display === "block") {
+                answerDiv.style.display = "none";
+            } else {
+                answerDiv.style.display = "block";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>G11物理：串并联电路中的功率和做功</h1>
+        
+        <h2>课程介绍</h2>
+        <p>本节课我们将学习串并联电路中功率和做功的计算方法，理解电功率与电路连接方式的关系，掌握相关计算公式及其应用。</p>
+        
+        <h2 class="section-properties">串并联电路基础知识回顾</h2>
+        <div class="properties-section">
+            <h3>1. 串联电路</h3>
+            <p><strong>定义：</strong>将电路元件依次连接，接入电路中，电流只有一条通路的电路称为串联电路。</p>
+            
+            <p><strong>串联电路特点：</strong></p>
+            <ul>
+                <li>电流特点：各处电流相等，即 <span class="highlight">I = I₁ = I₂ = I₃</span></li>
+                <li>电压特点：总电压等于各部分电路电压之和，即 <span class="highlight">U = U₁ + U₂ + U₃</span></li>
+                <li>电阻特点：总电阻等于各部分电阻之和，即 <span class="highlight">R = R₁ + R₂ + R₃</span></li>
+            </ul>
+            
+            <h3>2. 并联电路</h3>
+            <p><strong>定义：</strong>将电路元件并列连接，接入电路中，电流有多条通路的电路称为并联电路。</p>
+            
+            <p><strong>并联电路特点：</strong></p>
+            <ul>
+                <li>电流特点：总电流等于各支路电流之和，即 <span class="highlight">I = I₁ + I₂ + I₃</span></li>
+                <li>电压特点：各支路两端电压相等，即 <span class="highlight">U = U₁ = U₂ = U₃</span></li>
+                <li>电阻特点：总电阻的倒数等于各支路电阻倒数之和，即 <span class="highlight">1/R = 1/R₁ + 1/R₂ + 1/R₃</span></li>
+            </ul>
+        </div>
+        
+        <h2 class="section-electric-work">电流、电压、电功的基本定义</h2>
+        <div class="electric-work-section">
+            <h3>1. 电流的定义</h3>
+            <p><strong>电流：</strong>表示单位时间内通过导体横截面的电荷量，是描述电流强弱的物理量。</p>
+            
+            <div class="formula">
+                I = Q/t
+            </div>
+            
+            <p>其中：<br>
+            I 表示电流，单位为安培(A)<br>
+            Q 表示电量，单位为库仑(C)<br>
+            t 表示时间，单位为秒(s)</p>
+            
+            <h3>2. 电压的定义</h3>
+            <p><strong>电压：</strong>表示电场力移送单位电荷所做的功，是形成电流的原因。</p>
+            
+            <div class="formula">
+                U = W/Q
+            </div>
+            
+            <p>其中：<br>
+            U 表示电压，单位为伏特(V)<br>
+            W 表示电功，单位为焦耳(J)<br>
+            Q 表示电量，单位为库仑(C)</p>
+            
+            <h3>3. 电功的定义</h3>
+            <p><strong>电功：</strong>表示电流在电路中做功的多少，即电场力移送电荷所做的功。</p>
+            
+            <div class="formula">
+                W = UIt
+            </div>
+            
+            <p>根据欧姆定律，电功也可表示为：<br>
+            W = UIt = I²Rt = (U²/R)t</p>
+            
+            <p>其中：<br>
+            W 表示电功，单位为焦耳(J)<br>
+            U 表示电压，单位为伏特(V)<br>
+            I 表示电流，单位为安培(A)<br>
+            t 表示时间，单位为秒(s)<br>
+            R 表示电阻，单位为欧姆(Ω)</p>
+            
+            <h3>4. 串联电路中的电功分配</h3>
+            <p>在串联电路中，各电阻的电流相等，即 I₁ = I₂ = I₃ = I</p>
+            
+            <p>各电阻在时间t内所做的功为：<br>
+            W₁ = I²R₁t<br>
+            W₂ = I²R₂t<br>
+            W₃ = I²R₃t</p>
+            
+            <p>总电功为：<br>
+            W = W₁ + W₂ + W₃ = I²Rt = I²(R₁ + R₂ + R₃)t</p>
+            
+            <p>电功分配关系：<br>
+            <span class="highlight">W₁ : W₂ : W₃ = R₁ : R₂ : R₃</span></p>
+            
+            <p>结论：在串联电路中，各电阻在相同时间内做的功与其电阻值成正比，电阻越大，做的功越多。</p>
+            
+            <h3>5. 并联电路中的电功分配</h3>
+            <p>在并联电路中，各电阻两端的电压相等，即 U₁ = U₂ = U₃ = U</p>
+            
+            <p>各电阻在时间t内所做的功为：<br>
+            W₁ = (U²/R₁)t<br>
+            W₂ = (U²/R₂)t<br>
+            W₃ = (U²/R₃)t</p>
+            
+            <p>总电功为：<br>
+            W = W₁ + W₂ + W₃ = (U²/R)t = [U²(1/R₁ + 1/R₂ + 1/R₃)]t</p>
+            
+            <p>电功分配关系：<br>
+            <span class="highlight">W₁ : W₂ : W₃ = 1/R₁ : 1/R₂ : 1/R₃</span></p>
+            
+            <p>结论：在并联电路中，各电阻在相同时间内做的功与其电阻值成反比，电阻越大，做的功越少。</p>
+            
+            <h3>6. 电功与电功率的关系</h3>
+            <p>电功与电功率的关系式为：<br>
+            <span class="highlight">W = Pt</span></p>
+            
+            <p>即：电功 = 电功率 × 时间</p>
+        </div>
+        
+        <h2 class="section-electric-power">电功率的计算公式和原理</h2>
+        <div class="electric-power-section">
+            <h3>1. 电功率的定义</h3>
+            <p><strong>电功率：</strong>表示电流做功快慢的物理量，等于单位时间内电流所做的功。</p>
+            
+            <div class="formula">
+                P = W/t
+            </div>
+            
+            <p>其中：<br>
+            P 表示电功率，单位为瓦特(W)<br>
+            W 表示电功，单位为焦耳(J)<br>
+            t 表示时间，单位为秒(s)</p>
+            
+            <h3>2. 电功率的基本公式</h3>
+            <div class="formula">
+                P = UI
+            </div>
+            
+            <p>根据欧姆定律 U = IR 或 I = U/R，可得电功率的其他表达式：</p>
+            
+            <div class="formula">
+                P = UI = I²R = U²/R
+            </div>
+            
+            <h3>3. 串联电路中的功率分配</h3>
+            <p>在串联电路中，各电阻的电流相等，即 I₁ = I₂ = I₃ = I</p>
+            
+            <p>各电阻的功率为：<br>
+            P₁ = I²R₁<br>
+            P₂ = I²R₂<br>
+            P₃ = I²R₃</p>
+            
+            <p>总功率为：<br>
+            P = P₁ + P₂ + P₃ = I²R = I²(R₁ + R₂ + R₃)</p>
+            
+            <p>功率分配关系：<br>
+            <span class="highlight">P₁ : P₂ : P₃ = R₁ : R₂ : R₃</span></p>
+            
+            <p>结论：在串联电路中，各电阻消耗的功率与其电阻值成正比，电阻越大，消耗的功率越大。</p>
+            
+            <h3>4. 并联电路中的功率分配</h3>
+            <p>在并联电路中，各电阻两端的电压相等，即 U₁ = U₂ = U₃ = U</p>
+            
+            <p>各电阻的功率为：<br>
+            P₁ = U²/R₁<br>
+            P₂ = U²/R₂<br>
+            P₃ = U²/R₃</p>
+            
+            <p>总功率为：<br>
+            P = P₁ + P₂ + P₃ = U²/R = U²(1/R₁ + 1/R₂ + 1/R₃)</p>
+            
+            <p>功率分配关系：<br>
+            <span class="highlight">P₁ : P₂ : P₃ = 1/R₁ : 1/R₂ : 1/R₃</span></p>
+            
+            <p>结论：在并联电路中，各电阻消耗的功率与其电阻值成反比，电阻越大，消耗的功率越小。</p>
+        </div>
+        
+        <h2 class="section-comparison">串并联电路功率与做功对比表</h2>
+        <div class="comparison-section">
+            <table>
+                <thead>
+                    <tr>
+                        <th>电路类型</th>
+                        <th>电路特点</th>
+                        <th>功率分配</th>
+                        <th>电功分配</th>
+                        <th>功率/电功公式</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>串联电路</td>
+                        <td>电流相等：<br>I = I₁ = I₂ = I₃<br>电压分配：<br>U = U₁ + U₂ + U₃<br>电阻相加：<br>R = R₁ + R₂ + R₃</td>
+                        <td>P₁ : P₂ : P₃ = R₁ : R₂ : R₃<br>功率与电阻成正比</td>
+                        <td>W₁ : W₂ : W₃ = R₁ : R₂ : R₃<br>电功与电阻成正比</td>
+                        <td>P = UI = I²R = U²/R<br>W = UIt = I²Rt = (U²/R)t</td>
+                    </tr>
+                    <tr>
+                        <td>并联电路</td>
+                        <td>电压相等：<br>U = U₁ = U₂ = U₃<br>电流分配：<br>I = I₁ + I₂ + I₃<br>电阻倒数和：<br>1/R = 1/R₁ + 1/R₂ + 1/R₃</td>
+                        <td>P₁ : P₂ : P₃ = 1/R₁ : 1/R₂ : 1/R₃<br>功率与电阻成反比</td>
+                        <td>W₁ : W₂ : W₃ = 1/R₁ : 1/R₂ : 1/R₃<br>电功与电阻成反比</td>
+                        <td>P = UI = I²R = U²/R<br>W = UIt = I²Rt = (U²/R)t</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <h2 class="section-examples">典型例题解析</h2>
+        <div class="examples-section">
+            <h3>例题1：串联电路中的功率计算</h3>
+            <div class="example">
+                <p><strong>题目：</strong>两个电阻R₁=4Ω，R₂=6Ω串联在电路中，电源电压U=10V，求：</p>
+                <p>(1) 电路中的电流I</p>
+                <p>(2) 各电阻消耗的功率P₁、P₂</p>
+                <p>(3) 电路的总功率P</p>
+                
+                <p><strong>解答：</strong></p>
+                <p>(1) 串联电路中总电阻：R = R₁ + R₂ = 4Ω + 6Ω = 10Ω</p>
+                <p>电路中的电流：I = U/R = 10V/10Ω = 1A</p>
+                
+                <p>(2) R₁消耗的功率：P₁ = I²R₁ = (1A)² × 4Ω = 4W</p>
+                <p>R₂消耗的功率：P₂ = I²R₂ = (1A)² × 6Ω = 6W</p>
+                
+                <p>(3) 电路的总功率：P = UI = 10V × 1A = 10W</p>
+                <p>或：P = P₁ + P₂ = 4W + 6W = 10W</p>
+                
+                <p><strong>验证：</strong>功率分配比 P₁ : P₂ = 4W : 6W = 2 : 3，电阻比 R₁ : R₂ = 4Ω : 6Ω = 2 : 3，符合 P₁ : P₂ = R₁ : R₂ 的关系。</p>
+            </div>
+            
+            <h3>例题2：并联电路中的功率计算</h3>
+            <div class="example">
+                <p><strong>题目：</strong>两个电阻R₁=12Ω，R₂=6Ω并联在电路中，电源电压U=12V，求：</p>
+                <p>(1) 各支路电流I₁、I₂</p>
+                <p>(2) 各电阻消耗的功率P₁、P₂</p>
+                <p>(3) 电路的总功率P</p>
+                
+                <p><strong>解答：</strong></p>
+                <p>(1) 并联电路中各支路电压相等</p>
+                <p>通过R₁的电流：I₁ = U/R₁ = 12V/12Ω = 1A</p>
+                <p>通过R₂的电流：I₂ = U/R₂ = 12V/6Ω = 2A</p>
+                
+                <p>(2) R₁消耗的功率：P₁ = U²/R₁ = (12V)²/12Ω = 144/12W = 12W</p>
+                <p>R₂消耗的功率：P₂ = U²/R₂ = (12V)²/6Ω = 144/6W = 24W</p>
+                
+                <p>(3) 电路的总功率：P = P₁ + P₂ = 12W + 24W = 36W</p>
+                <p>或：P = UI = 12V × (1A+2A) = 12V × 3A = 36W</p>
+                
+                <p><strong>验证：</strong>功率分配比 P₁ : P₂ = 12W : 24W = 1 : 2，电阻倒数比 1/R₁ : 1/R₂ = 1/12 : 1/6 = 1 : 2，符合 P₁ : P₂ = 1/R₁ : 1/R₂ 的关系。</p>
+            </div>
+            
+            <h3>例题3：电功的计算</h3>
+            <div class="example">
+                <p><strong>题目：</strong>一个电炉的电阻是48.4Ω，接到220V的电路中，通电5分钟，求：</p>
+                <p>(1) 电炉的功率</p>
+                <p>(2) 电流做的功</p>
+                <p>(3) 这些功相当于多少千瓦时(kW·h)</p>
+                
+                <p><strong>解答：</strong></p>
+                <p>(1) 电炉的功率：P = U²/R = (220V)²/48.4Ω = 48400/48.4W = 1000W = 1kW</p>
+                
+                <p>(2) 通电时间：t = 5分钟 = 300秒</p>
+                <p>电流做的功：W = Pt = 1000W × 300s = 300000J = 3×10⁵J</p>
+                
+                <p>(3) 1kW·h = 3.6×10⁶J</p>
+                <p>W = 3×10⁵J = (3×10⁵)/(3.6×10⁶)kW·h = 1/12 kW·h ≈ 0.083kW·h</p>
+            </div>
+        </div>
+        
+        <h2 class="section-exercises">课堂练习</h2>
+        <div class="exercises-section">
+            <h3>练习题1</h3>
+            <p>两个电阻R₁=10Ω，R₂=20Ω串联在电路中，电路总电压为6V，求：</p>
+            <p>(1) 电路中的电流</p>
+            <p>(2) 各电阻两端的电压</p>
+            <p>(3) 各电阻消耗的功率</p>
+            <p>(4) 1分钟内各电阻消耗的电能</p>
+            
+            <button class="answer-button" onclick="toggleAnswer('answer1')">查看答案</button>
+            <div id="answer1" class="answer-content">
+                <p><strong>答案：</strong></p>
+                <p>(1) 串联电路中总电阻：R = R₁ + R₂ = 10Ω + 20Ω = 30Ω</p>
+                <p>电路中的电流：I = U/R = 6V/30Ω = 0.2A</p>
+                
+                <p>(2) 各电阻两端的电压：</p>
+                <p>U₁ = IR₁ = 0.2A × 10Ω = 2V</p>
+                <p>U₂ = IR₂ = 0.2A × 20Ω = 4V</p>
+                
+                <p>(3) 各电阻消耗的功率：</p>
+                <p>P₁ = I²R₁ = (0.2A)² × 10Ω = 0.4W</p>
+                <p>P₂ = I²R₂ = (0.2A)² × 20Ω = 0.8W</p>
+                
+                <p>(4) 1分钟内各电阻消耗的电能：</p>
+                <p>时间t = 1分钟 = 60秒</p>
+                <p>W₁ = I²R₁t = (0.2A)² × 10Ω × 60s = 24J</p>
+                <p>W₂ = I²R₂t = (0.2A)² × 20Ω × 60s = 48J</p>
+            </div>
+            
+            <h3>练习题2</h3>
+            <p>两个电阻R₁=15Ω，R₂=30Ω并联在电路中，电路总电压为9V，求：</p>
+            <p>(1) 各支路的电流</p>
+            <p>(2) 电路的总电流</p>
+            <p>(3) 各电阻消耗的功率</p>
+            <p>(4) 2分钟内电路消耗的总电能</p>
+            
+            <button class="answer-button" onclick="toggleAnswer('answer2')">查看答案</button>
+            <div id="answer2" class="answer-content">
+                <p><strong>答案：</strong></p>
+                <p>(1) 并联电路中各支路电压相等</p>
+                <p>通过R₁的电流：I₁ = U/R₁ = 9V/15Ω = 0.6A</p>
+                <p>通过R₂的电流：I₂ = U/R₂ = 9V/30Ω = 0.3A</p>
+                
+                <p>(2) 电路总电流：I = I₁ + I₂ = 0.6A + 0.3A = 0.9A</p>
+                
+                <p>(3) 各电阻消耗的功率：</p>
+                <p>P₁ = U²/R₁ = (9V)²/15Ω = 81/15W = 5.4W</p>
+                <p>P₂ = U²/R₂ = (9V)²/30Ω = 81/30W = 2.7W</p>
+                
+                <p>(4) 2分钟内电路消耗的总电能：</p>
+                <p>时间t = 2分钟 = 120秒</p>
+                <p>方法一：W = W₁ + W₂ = P₁t + P₂t = (5.4W + 2.7W) × 120s = 8.1W × 120s = 972J</p>
+                <p>方法二：总功率 P = P₁ + P₂ = 5.4W + 2.7W = 8.1W</p>
+                <p>总电能 W = Pt = 8.1W × 120s = 972J</p>
+            </div>
+            
+            <h3>练习题3</h3>
+            <p>R₁=6Ω，R₂=12Ω，R₃=4Ω，电源电压U=12V。</p>
+            <p>R₂和R₃并联后再与R₁串联，求：</p>
+            <p>(1) R₂和R₃并联的总电阻</p>
+            <p>(2) 电路的总电阻</p>
+            <p>(3) 电路中的总电流</p>
+            <p>(4) R₁、R₂、R₃各自消耗的功率</p>
+            <p>(5) 电路的总功率</p>
+            
+            <button class="answer-button" onclick="toggleAnswer('answer3')">查看答案</button>
+            <div id="answer3" class="answer-content">
+                <p><strong>答案：</strong></p>
+                <p>(1) R₂和R₃并联的总电阻：</p>
+                <p>1/R₂₃ = 1/R₂ + 1/R₃ = 1/12Ω + 1/4Ω = 1/12 + 3/12 = 4/12 = 1/3</p>
+                <p>所以 R₂₃ = 3Ω</p>
+                
+                <p>(2) 电路的总电阻：</p>
+                <p>R₁与R₂₃串联，所以 R = R₁ + R₂₃ = 6Ω + 3Ω = 9Ω</p>
+                
+                <p>(3) 电路中的总电流：</p>
+                <p>I = U/R = 12V/9Ω = 4/3 A ≈ 1.33A</p>
+                
+                <p>(4) R₁、R₂、R₃各自消耗的功率：</p>
+                <p>R₁两端电压：U₁ = IR₁ = (4/3)A × 6Ω = 8V</p>
+                <p>R₂₃并联部分电压：U₂₃ = U - U₁ = 12V - 8V = 4V</p>
+                <p>R₁功率：P₁ = U₁²/R₁ = (8V)²/6Ω = 64/6W ≈ 10.67W</p>
+                <p>或 P₁ = I²R₁ = [(4/3)A]² × 6Ω = 16/9 × 6W = 32/3W ≈ 10.67W</p>
+                <p>R₂功率：P₂ = U₂₃²/R₂ = (4V)²/12Ω = 16/12W = 4/3W ≈ 1.33W</p>
+                <p>R₃功率：P₃ = U₂₃²/R₃ = (4V)²/4Ω = 16/4W = 4W</p>
+                
+                <p>(5) 电路的总功率：</p>
+                <p>方法一：P = P₁ + P₂ + P₃ = 32/3W + 4/3W + 4W = 36/3W + 4W = 12W + 4W = 16W</p>
+                <p>方法二：P = UI = 12V × (4/3)A = 16W</p>
+            </div>
+        </div>
+        
+        <h2>课堂小结</h2>
+        <p>1. 电功率是表示电流做功快慢的物理量，计算公式为 P = UI = I²R = U²/R</p>
+        <p>2. 电功是表示电流做功多少的物理量，计算公式为 W = UIt = I²Rt = (U²/R)t</p>
+        <p>3. 在串联电路中，功率和电功都与电阻成正比：P₁ : P₂ = R₁ : R₂，W₁ : W₂ = R₁ : R₂</p>
+        <p>4. 在并联电路中，功率和电功都与电阻成反比：P₁ : P₂ = 1/R₁ : 1/R₂，W₁ : W₂ = 1/R₁ : 1/R₂</p>
+        <p>5. 无论是串联还是并联电路，总功率等于各部分功率之和：P = P₁ + P₂ + ...</p>
+        <p>6. 无论是串联还是并联电路，总电功等于各部分电功之和：W = W₁ + W₂ + ...</p>
+    </div>
+</body>
+</html>
