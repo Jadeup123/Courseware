@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>G9物理-电路计算20260109</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: white;
+            background-color: #2196F3;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+        }
+        .section {
+            margin-bottom: 40px;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            background-color: #fafafa;
+        }
+        .section-1 {
+            background-color: #E3F2FD;
+            border-color: #2196F3;
+        }
+        .section-2 {
+            background-color: #E8F5E9;
+            border-color: #4CAF50;
+        }
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #2196F3;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        .problem {
+            margin-bottom: 30px;
+            padding: 15px;
+            background-color: white;
+            border-left: 4px solid #2196F3;
+            border-radius: 5px;
+        }
+        .problem-title {
+            font-weight: bold;
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        .given {
+            margin-bottom: 15px;
+            color: #666;
+        }
+        .given strong {
+            color: #2196F3;
+        }
+        .questions {
+            margin-top: 15px;
+        }
+        .questions li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+        ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .circuit-type {
+            display: inline-block;
+            padding: 4px 12px;
+            background-color: #2196F3;
+            color: white;
+            border-radius: 15px;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .page-break {
+            border-top: 3px dashed #ccc;
+            margin: 40px 0;
+            padding-top: 20px;
+        }
+        .circuit-diagram {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .circuit-diagram svg, .circuit-diagram img {
+            max-width: 100%;
+            height: auto;
+        }
+        .answer-section {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #fff3e0;
+            border-left: 4px solid #ff9800;
+            border-radius: 5px;
+            display: none;
+        }
+        .answer-section.show {
+            display: block;
+        }
+        .answer-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .answer-btn:hover {
+            background-color: #45a049;
+        }
+        .answer-title {
+            font-weight: bold;
+            color: #ff9800;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>物理习题 - 电路计算</h1>
+
+        <!-- 第一页内容 -->
+        <div class="section section-1">
+            <h2>第一页</h2>
+
+            <div class="problem">
+                <div class="problem-title">第1题</div>
+                <div class="given"><strong>已知条件：</strong>电源电压 U = 10V，电阻 R = 5Ω</div>
+                <div class="circuit-diagram">
+                    <img src="局部截取_20260109_163751.png" alt="第1题电路图" style="max-width: 100%; height: auto;"/>
+                </div>
+                <div class="questions">
+                    <p><strong>电路类型：</strong>简单串联电路（电源 + 开关 + 电阻 R）</p>
+                    <ul>
+                        <li>求流过电阻的电流是多少安培？</li>
+                    </ul>
+                </div>
+                <button class="answer-btn" onclick="toggleAnswer('answer1')">查看答案</button>
+                <div id="answer1" class="answer-section">
+                    <div class="answer-title">答案：</div>
+                    <p>根据欧姆定律：I = U / R = 10V / 5Ω = 2A</p>
+                    <p>流过电阻的电流是 2 安培。</p>
+                </div>
+            </div>
+
+            <div class="problem">
+                <div class="problem-title">第2题</div>
+                <div class="given"><strong>已知条件：</strong>电源电压 U = 30V，R₁ = 10Ω，R₂ = 20Ω</div>
+<div class="circuit-diagram">
+                    <img src="局部截取_20260109_163743.png" alt="第2题电路图" style="max-width: 100%; height: auto;"/>
+                </div>
+                <div class="circuit-type">并联电路</div>
+                <div class="questions">
+                    <ul>
+                        <li>(1) 流过 R₁、R₂ 的电流分别是多少安培？</li>
+                        <li>(2) 干路电流是多少安培？</li>
+                        <li>(3) 电路的总电阻是多少欧姆？</li>
+                    </ul>
+                </div>
+                <button class="answer-btn" onclick="toggleAnswer('answer2')">查看答案</button>
+                <div id="answer2" class="answer-section">
+                    <div class="answer-title">答案：</div>
+                    <p><strong>(1)</strong> I₁ = U / R₁ = 30V / 10Ω = 3A</p>
+                    <p>I₂ = U / R₂ = 30V / 20Ω = 1.5A</p>
+                    <p><strong>(2)</strong> 干路电流 I = I₁ + I₂ = 3A + 1.5A = 4.5A</p>
+                    <p><strong>(3)</strong> 总电阻 R = U / I = 30V / 4.5A = 6.67Ω</p>
+                    <p>或使用并联公式：1/R = 1/R₁ + 1/R₂ = 1/10 + 1/20 = 3/20，所以 R = 20/3 ≈ 6.67Ω</p>
+                </div>
+            </div>
+
+            <div class="problem">
+                <div class="problem-title">第3题</div>
+                <div class="given"><strong>已知条件：</strong>电源电压 U = 50V，L₁、L₂ 电阻分别为 10Ω、40Ω</div>
+                <div class="circuit-diagram">
+                    <img src="局部截取_20260109_163758.png" alt="第3题电路图" style="max-width: 100%; height: auto;"/>
+                </div>
+                <div class="circuit-type">串联电路（电压表并联在 L₂ 两端）</div>
+                <div class="questions">
+                    <ul>
+                        <li>(1) 电路的总电阻？</li>
+                        <li>(2) 电路中的电流是多少？</li>
+                        <li>(3) 电压表的示数是多少？</li>
+                    </ul>
+                </div>
+                <button class="answer-btn" onclick="toggleAnswer('answer3')">查看答案</button>
+                <div id="answer3" class="answer-section">
+                    <div class="answer-title">答案：</div>
+                    <p><strong>(1)</strong> 总电阻 R = R₁ + R₂ = 10Ω + 40Ω = 50Ω</p>
+                    <p><strong>(2)</strong> 电路中的电流 I = U / R = 50V / 50Ω = 1A</p>
+                    <p><strong>(3)</strong> 电压表的示数（L₂两端的电压）</p>
+                    <p>U₂ = I × R₂ = 1A × 40Ω = 40V</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第二页内容 -->
+        <div class="page-break"></div>
+
+        <div class="section section-2">
+            <h2>第二页</h2>
+
+            <div class="problem">
+                <div class="problem-title">第4题</div>
+                <div class="given"><strong>已知条件：</strong>U = 120V，R₁ = 20Ω，R₂ = 20Ω，R₃ = 50Ω</div>
+                <div class="circuit-diagram">
+                    <img src="局部截取_20260109_163737.png" alt="第4题电路图" style="max-width: 100%; height: auto;"/>
+                </div>
+                <div class="circuit-type">混联电路（R₁与R₂并联后，再与R₃串联）</div>
+                <div class="questions">
+                    <ul>
+                        <li>R₁、R₂并联部分的电阻是多少？</li>
+                        <li>电路的总电阻是多少？</li>
+                        <li>干路中的电流是多少？</li>
+                        <li>流过R₁的电流是多少？</li>
+                    </ul>
+                </div>
+                <button class="answer-btn" onclick="toggleAnswer('answer4')">查看答案</button>
+                <div id="answer4" class="answer-section">
+                    <div class="answer-title">答案：</div>
+                    <p><strong>R₁、R₂并联部分的电阻：</strong></p>
+                    <p>1/R₁₂ = 1/R₁ + 1/R₂ = 1/20 + 1/20 = 2/20 = 1/10</p>
+                    <p>所以 R₁₂ = 10Ω</p>
+                    <p><strong>电路的总电阻：</strong></p>
+                    <p>R = R₁₂ + R₃ = 10Ω + 50Ω = 60Ω</p>
+                    <p><strong>干路中的电流：</strong></p>
+                    <p>I = U / R = 120V / 60Ω = 2A</p>
+                    <p><strong>流过R₁的电流：</strong></p>
+                    <p>I₁ = U₁ / R₁ = (I × R₁₂) / R₁ = (2A × 10Ω) / 20Ω = 1A</p>
+                    <p>或：由于 R₁ = R₂ = 20Ω，并联后电流均分，所以 I₁ = I / 2 = 2A / 2 = 1A</p>
+                </div>
+            </div>
+
+            <div class="problem">
+                <div class="problem-title">第5题</div>
+                <div class="given"><strong>已知条件：</strong>I-U特性曲线图（电流-电压关系图）</div>
+                <div class="circuit-diagram">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 280" width="380" height="280">
+  <defs>
+    <style>
+      .axis { stroke: #000; stroke-width: 2.5; }
+      .grid { stroke: #ccc; stroke-width: 1.2; stroke-dasharray: 5,3; }
+      .line-a { stroke: #2196F3; stroke-width: 2.5; }
+      .line-b { stroke: #4CAF50; stroke-width: 2.5; }
+      .line-c { stroke: #FF9800; stroke-width: 2.5; }
+      .text { font-family: Arial, sans-serif; font-size: 16px; fill: #000; font-weight: bold; }
+      .label { font-size: 12px; fill: #666; }
+      .legend { font-size: 12px; }
+    </style>
+  </defs>
+  <!-- 坐标轴 -->
+  <line x1="45" y1="40" x2="45" y2="240" class="axis"/>
+  <line x1="45" y1="240" x2="340" y2="240" class="axis"/>
+  <!-- 箭头 -->
+  <polygon points="45,28 38,48 52,48" fill="#000"/>
+  <polygon points="352,240 342,233 342,247" fill="#000"/>
+  <!-- 坐标轴标签 -->
+  <text x="25" y="140" class="text" text-anchor="middle" transform="rotate(-90 25,140)">I (A)</text>
+  <text x="192" y="270" class="text" text-anchor="middle">U (V)</text>
+  <!-- Y轴刻度 -->
+  <text x="38" y="140" class="label" text-anchor="end">2</text>
+  <line x1="42" y1="140" x2="45" y2="140" class="axis" stroke-width="1.5"/>
+  <text x="38" y="40" class="label" text-anchor="end">4</text>
+  <line x1="42" y1="40" x2="45" y2="40" class="axis" stroke-width="1.5"/>
+  <!-- X轴刻度 -->
+  <text x="140" y="260" class="label" text-anchor="middle">20</text>
+  <line x1="140" y1="240" x2="140" y2="244" class="axis" stroke-width="1.5"/>
+  <text x="235" y="260" class="label" text-anchor="middle">40</text>
+  <line x1="235" y1="240" x2="235" y2="244" class="axis" stroke-width="1.5"/>
+  <!-- A线: 过点(20,4) -->
+  <line x1="45" y1="240" x2="140" y2="40" class="line-a"/>
+  <text x="148" y="48" class="text legend" fill="#2196F3">A</text>
+  <!-- 辅助线A -->
+  <line x1="140" y1="40" x2="140" y2="240" class="grid"/>
+  <line x1="45" y1="40" x2="140" y2="40" class="grid"/>
+  <!-- B线: 过点(40,4) -->
+  <line x1="45" y1="240" x2="235" y2="40" class="line-b"/>
+  <text x="243" y="48" class="text legend" fill="#4CAF50">B</text>
+  <!-- 辅助线B -->
+  <line x1="235" y1="40" x2="235" y2="240" class="grid"/>
+  <line x1="45" y1="40" x2="235" y2="40" class="grid"/>
+  <!-- C线: 过点(40,2) -->
+  <line x1="45" y1="240" x2="235" y2="140" class="line-c"/>
+  <text x="243" y="148" class="text legend" fill="#FF9800">C</text>
+  <!-- 辅助线C -->
+  <line x1="235" y1="140" x2="235" y2="240" class="grid"/>
+  <line x1="45" y1="140" x2="235" y2="140" class="grid"/>
+</svg>
+                </div>
+                <div class="circuit-type">I-U特性分析</div>
+                <div class="questions">
+                    <p><strong>三条直线A、B、C代表三个电阻的I-U特性：</strong></p>
+                    <ul>
+                        <li>A线：过点(20V, 4A)</li>
+                        <li>B线：过点(40V, 4A)</li>
+                        <li>C线：过点(40V, 2A)</li>
+                    </ul>
+                    <p><strong>问题：</strong></p>
+                    <ul>
+                        <li>(1) R_A、R_B、R_C电阻分别是多少？</li>
+                        <li>(2) 三个电阻串联后的总电阻是多少？</li>
+                        <li>(3) 三个电阻并联后的总电阻是多少？</li>
+                    </ul>
+                </div>
+                <button class="answer-btn" onclick="toggleAnswer('answer5')">查看答案</button>
+                <div id="answer5" class="answer-section">
+                    <div class="answer-title">答案：</div>
+                    <p><strong>(1) 各电阻值：</strong></p>
+                    <p>根据欧姆定律 R = U / I</p>
+                    <p>R_A = 20V / 4A = 5Ω</p>
+                    <p>R_B = 40V / 4A = 10Ω</p>
+                    <p>R_C = 40V / 2A = 20Ω</p>
+                    <p><strong>(2) 串联后的总电阻：</strong></p>
+                    <p>R_串 = R_A + R_B + R_C = 5Ω + 10Ω + 20Ω = 35Ω</p>
+                    <p><strong>(3) 并联后的总电阻：</strong></p>
+                    <p>1/R_并 = 1/R_A + 1/R_B + 1/R_C = 1/5 + 1/10 + 1/20 = 4/20 + 2/20 + 1/20 = 7/20</p>
+                    <p>R_并 = 20/7 ≈ 2.86Ω</p>
+                </div>
+            </div>
+        <!-- 第三页内容 -->
+        <div class="page-break"></div>
+
+        <div class="section section-1">
+            <h2>第三页</h2>
+
+            <div class="problem">
+                <div class="problem-title">第6题</div>
+                <div class="circuit-diagram">
+                    <img src="局部截取_20260104_155118.png" alt="第6题电路图" style="max-width: 100%; height: auto;"/>
+                </div>
+                <div class="questions">
+                    <p><strong>题目要求：</strong>根据实物电路，在虚线框内画出对应电路图。</p>
+                </div>
+                <button class="answer-btn" onclick="toggleAnswer('answer6')">查看参考答案</button>
+                <div id="answer6" class="answer-section">
+                    <div class="answer-title">参考答案：</div>
+                    <p><strong>电路结构分析：</strong></p>
+                    <p>电源（三节电池串联）→ S₁（干路开关）→ 分叉点</p>
+                    <p>支路1：L₁（灯泡）</p>
+                    <p>支路2：S₂与L₂串联</p>
+                    <p>两支路并联后回电源负极</p>
+                    <p><strong>电路类型：</strong>并联电路（L₁与L₂并联，S₂控制L₂支路）</p>
+                </div>
+            </div>
+
+            <div class="problem">
+                <div class="problem-title">第7题</div>
+                <div class="circuit-diagram">
+                    <img src="局部截取_20260104_155152.png" alt="第7题电路图" style="max-width: 100%; height: auto;"/>
+                </div>
+                <div class="questions">
+                    <p><strong>题目要求：</strong>请根据实物图在虚线框内画出对应的电路图。</p>
+                </div>
+                <button class="answer-btn" onclick="toggleAnswer('answer7')">查看参考答案</button>
+                <div id="answer7" class="answer-section">
+                    <div class="answer-title">参考答案：</div>
+                    <p><strong>电路结构分析：</strong></p>
+                    <p>电源（两节电池串联）→ S₁（干路开关）→ 分叉点</p>
+                    <p>支路1：L₁（灯泡）</p>
+p>支路2：L₂与S₂串联</p>
+                    <p>两支路并联后回电源负极</p>
+                    <p><strong>电路类型：</strong>混联电路（L₁与L₂并联后与L₃串联）</p>
+                </div>
+            </div>
+
+            <div class="problem">
+                <div class="problem-title">第8题</div>
+                <div class="circuit-diagram">
+                    <img src="局部截取_20260104_155211.png" alt="第8题电路图" style="max-width: 100%; height: auto;"/>
+                </div>
+                <div class="questions">
+                    <p><strong>题目要求：</strong>如图甲所示的是电铃工作的实物图，请在图乙方框中画出电路图。</p>
+                </div>
+                <button class="answer-btn" onclick="toggleAnswer('answer8')">查看参考答案</button>
+                <div id="answer8" class="answer-section">
+                    <div class="answer-title">参考答案：</div>
+                    <p><strong>电路结构分析：</strong></p>
+                    <p>电源（两节电池串联）→ 开关 → 电铃 → 回电源负极</p>
+                    <p><strong>电路类型：</strong>简单串联电路（电源 + 开关 + 电铃）</p>
+                </div>
+            </div>
+
+            </div>
+    </div>
+    <script>
+        function toggleAnswer(answerId) {
+            var answerSection = document.getElementById(answerId);
+            if (answerSection.classList.contains('show')) {
+                answerSection.classList.remove('show');
+            } else {
+                answerSection.classList.add('show');
+            }
+        }
+    </script>
+</body>
+</html>
